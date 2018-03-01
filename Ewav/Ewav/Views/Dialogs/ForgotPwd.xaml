@@ -1,0 +1,52 @@
+﻿<sdk:ChildWindow	
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:Ewav"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+	mc:Ignorable="d"
+	Title="Forgot Password"
+	x:Class="Ewav.ForgotPwd" VerticalAlignment="Center"
+	Style="{StaticResource ChildWindowStyle1}" HorizontalAlignment="Center" Background="#FFD5E2F7" >
+	
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<StackPanel Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="GridBox">
+			<StackPanel x:Name="spMsg" Height="26" VerticalAlignment="Top" Orientation="Horizontal" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Center"/>
+				<TextBlock x:Name="tbErrMsg" TextWrapping="Wrap" Text="The email you entered is incorrect. Please try again." FontFamily="Segoe UI" Foreground="#FF601919" Margin="6,0,0,0" FontWeight="Normal" VerticalAlignment="Center"/>
+			</StackPanel>
+			<Grid x:Name="grdPwd" Height="109" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,10">
+				<Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="90" Height="29" Margin="0,0,200,-6" HorizontalAlignment="Right" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Style="{StaticResource btnprimary}" KeyDown="tbemail_KeyDown" TabIndex="3" Cursor="Hand" />
+				<Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="80" Height="29" HorizontalAlignment="Right" Margin="0,0,107,-6" VerticalAlignment="Bottom" d:LayoutOverrides="Height" TabIndex="4" Cursor="Hand" Style="{StaticResource btnprimary}" />
+				<TextBlock TextWrapping="Wrap" Text="Enter your registered email address to have the password sent to you." HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="13.333" FontWeight="Normal" Width="340" VerticalAlignment="Top"/>
+				<TextBlock HorizontalAlignment="Left" Margin="4,48,0,0" TextWrapping="Wrap" Text="Email" Width="70" FontFamily="Segoe UI" FontSize="13.333" FontWeight="Bold" LineHeight="13.333" VerticalAlignment="Top"/>
+				<TextBox x:Name="tbEmail" Margin="51,44,7,0" TextWrapping="Wrap" Text="" FontFamily="Segoe UI" FontSize="13.333" VerticalAlignment="Top" Width="281" HorizontalAlignment="Left" KeyDown="tbemail_KeyDown" TabIndex="2"/>
+			</Grid>
+            <StackPanel x:Name="spMsg_Success" Height="62" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" >
+				<Image HorizontalAlignment="Left" Source="../../images/SuccessD.png" Stretch="Fill" VerticalAlignment="Center" Height="26" Width="26"/>
+				<TextBlock TextWrapping="Wrap" Text="A new password was sent to the email address you provided." FontFamily="Segoe UI" Foreground="#FF0C3929" Margin="29,-26,0,0" FontWeight="Normal" VerticalAlignment="Center"/>
+                <Button x:Name="btnLoginReturn" Content="Return to Log In" Margin="0,4,0,0" Width="152" HorizontalAlignment="Center" Click="btnLoginReturn_Click" Style="{StaticResource btnprimary}" Height="29" KeyDown="btnLoginReturn_KeyDown" Cursor="Hand" TabIndex="5"/>
+			</StackPanel>
+
+            <StackPanel x:Name="spMsg_Error" Height="62" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" >
+                <Image HorizontalAlignment="Left" Source="../../images/ErrorD.png" Stretch="Fill" VerticalAlignment="Center" Height="26" Width="26"/>
+                <TextBlock TextWrapping="Wrap" Text="Error updating information. Contact system administrator." FontFamily="Segoe UI" Foreground="#FF1F332C" Margin="29,-26,0,0" FontSize="14.667" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button x:Name="btnLoginReturn1" Content="Return to Log In" Margin="0,4,0,0" Width="110" HorizontalAlignment="Center" Click="btnLoginReturn_Click" Style="{StaticResource btnstyle1}" Height="29" KeyDown="btnLoginReturn_KeyDown" Cursor="Hand" TabIndex="5"/>
+            </StackPanel>
+            
+            
+        </StackPanel>
+		<toolkit:BusyIndicator x:Name="bsyInd" IsEnabled="{Binding IsChecked, ElementName=checkEnable}" Margin="132,20,0,0" 
+			IsBusy="True" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Style="{StaticResource busy}" Visibility="Collapsed" >
+			<toolkit:BusyIndicator.Effect>
+				<DropShadowEffect Color="#FF8F8E8E" ShadowDepth="6" Direction="282"/>
+			</toolkit:BusyIndicator.Effect>
+		</toolkit:BusyIndicator>
+	</Grid>
+</sdk:ChildWindow>

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical</name>
+    </assembly>
+    <members>
+        <member name="T:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators">
+            <summary>
+            Contains a variety of functions to be used within Calc for performing statistical calculations on data.
+            </summary>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Anova(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            ANalysis Of VAriance, useful for comparing the means between 2 or more series.
+            </summary>
+            <example>
+            [Calc]
+            <para><c>Set1.ValuesOf(Column1).Anova(Series1=Set2.ValuesOf(Column1), Series2=Set3.ValuesOf(Column1));</c></para>
+            </example>
+            <remarks>
+            Applying Anova to two identical series should result in the sum of squares between 
+            treatments and mean square between treatments to be zero.  Thus the F critical will 
+            also be zero.
+            <para>Each series to compare to should be assigned to Series1, Series2, etc.</para>
+            </remarks>
+            <returns>
+            An Anova object, which contains the following values: Correction mean, sum of 
+            squares error, total and treatment, degrees of freedom error, total and treatment, the 
+            mean of the treatments and error, and the F critical factor, which is the variance 
+            between the items divided by the variance within the items.
+            </returns>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Correlation(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            A measure of the dependence between two series of values.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Correlation(Set2.ValuesOf(Column1));</c>
+            </example>
+            <remarks>
+            Comparing a series against itself will result in a Correlation of 1, whereas 
+            comparing against a completely opposite series (a perfect decreasing (negative) linear
+            relationship) will result in a Correlation of -1.
+            </remarks>
+            <returns>A double between 1 and -1.</returns>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Covariance(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            A measure of how much two series change together.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Covariance(Set2.ValuesOf(Column1));</c>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Max(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Returns the highest value in a series of values, or series of expressions.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Max();</c>
+            <para><c>Set1.Max(Column1);</c></para>
+            <para><c>Set1.Max(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Mean(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Returns the arithmetic mean -- the sum of the values (or expression results) 
+            divided by the number of values.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Mean();</c>
+            <para><c>Set1.Mean(Column1);</c></para>
+            <para><c>Set1.Mean(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Median(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            The middle value in an ordered list of values, or a series of expressions.
+            If there is an even number of values, the mean is the mean of the two middle values.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Median();</c>
+            <para><c>Set1.Median(Column1);</c></para>
+            <para><c>Set1.Median(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Min(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Returns the lowest value in a series of values, or a series of expressions.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Min();</c>
+            <para><c>Set1.Min(Column1);</c></para>
+            <para><c>Set1.Min(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Range(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Returns the difference between the lowest and highest values in a series of values,
+            or a series of expressions.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Range();</c>
+            <para><c>Set1.Range(Column1);</c></para>
+            <para><c>Set1.Range(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.StandardDeviationEstimated(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Standard deviation (square root of the variance) on a series of values representing an 
+            incomplete part of a population.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).StandardDeviationEstimated();</c>
+            <para><c>Set1.StandardDeviationEstimated(Column1);</c></para>
+            <para><c>Set1.StandardDeviationEstimated(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.StandardDeviationPopulation(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            Standard deviation (square root of the variance) on a series of values representing
+            the entire population.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).StandardDeviationPopulation();</c>
+            <para><c>Set1.StandardDeviationPopulation(Column1);</c></para>
+            <para><c>Set1.StandardDeviationPopulation(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.Sum(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            The total of all values (or expression results) in the series.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).Sum();</c>
+            <para><c>Set1.Sum(Column1);</c></para>
+            <para><c>Set1.Sum(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.VarianceEstimated(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            An indication of how far values of a series lie from the mean of that series, where
+            the set of data supplied is a subset of a population.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).VarianceEstimated();</c>
+            <para><c>Set1.VarianceEstimated(Column1);</c></para>
+            <para><c>Set1.VarianceEstimated(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="M:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.CustomOperators.VariancePopulation(ComponentArt.Silverlight.DataVisualization.CalcEngine.ExpressionEvaluator,System.Collections.IEnumerable,System.Object)">
+            <summary>
+            An indication of how far values of a series lie from the mean of that series, where
+            the set of data supplied is the complete set of values in a population.
+            </summary>
+            <example>
+            <c>Set1.ValuesOf(Column1).VariancePopulation();</c>
+            <para><c>Set1.VariancePopulation(Column1);</c></para>
+            <para><c>Set1.VariancePopulation(Column1 + Column3);</c></para>
+            </example>
+        </member>
+        <member name="T:ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.Anova">
+            <summary>
+            Class used to return the results of an Anova Statistical CalcExtension calculation.
+            </summary>
+        </member>
+    </members>
+</doc>

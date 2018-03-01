@@ -1,0 +1,41 @@
+﻿<sdk:ChildWindow	
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	mc:Ignorable="d"
+	x:Class="Ewav.SaveDash"
+	Title="Save Dashboard" VerticalAlignment="Center"
+	Style="{StaticResource ChildWindowStyle1}" HorizontalAlignment="Center" Background="#FFD5E2F7">
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<StackPanel Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="GridBox">
+			<StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,7" MinHeight="26" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Top"/>
+				<TextBlock x:Name="tbSaveError" TextWrapping="Wrap" Text="Please enter a Title." FontFamily="Segoe UI" Foreground="#FF601919" FontSize="14.667" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8,0,0,0" Width="232.3"/>
+			</StackPanel>
+			<StackPanel x:Name="spSave">
+				<TextBlock TextWrapping="Wrap" Text="Title" FontFamily="Segoe UI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,5"/>
+				<TextBox x:Name="txtSaveTitle" Height="30" TextWrapping="Wrap" Text="" Width="262" Margin="0,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+				<TextBlock TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontFamily="Segoe UI" Margin="0,6,0,5" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment"/>
+                <TextBox x:Name="txtSaveDesc" Height="51" VerticalAlignment="Top" Width="262" Margin="0,0,0,5" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalContentAlignment="Top" Text=""/>
+				<!--<RichTextBox x:Name="txtSaveDesc1" Height="51" VerticalAlignment="Top" Width="262" Margin="0,5" HorizontalAlignment="Left">
+					<Paragraph><Run Text=""/></Paragraph>
+				</RichTextBox>-->
+				<Button x:Name="btnSave" Content="Save Dashboard" Height="29" VerticalAlignment="Top" Width="172" Margin="0,5" HorizontalAlignment="Left" Click="btnSave_Click" Style="{StaticResource btnprimary}"/>
+				<Button x:Name="btnCancel" Content="Cancel" Height="29" VerticalAlignment="Top" Width="80" Margin="0,-34,0,5" HorizontalAlignment="Right" Click="CancelButton_Click" Style="{StaticResource btnprimary}"/>
+			</StackPanel>
+			<StackPanel x:Name="spMsg_Success" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Source="../../images/SuccessD.png" Stretch="Fill" VerticalAlignment="Center" Height="26" Width="26"/>
+				<TextBlock TextWrapping="Wrap" Text="Your dashboard has been saved." FontFamily="Segoe UI" Foreground="#FF1F332C" Margin="29,-26,0,0" FontSize="14.667" FontWeight="Bold" VerticalAlignment="Center"/>
+				<TextBlock TextWrapping="Wrap" Text="Title:" FontFamily="Segoe UI" Foreground="#FF1F332C" FontSize="14.667" FontWeight="Normal" VerticalAlignment="Center" Margin="29,0,0,0"/>
+                <TextBlock x:Name="canvasName" TextWrapping="Wrap" Text="Hi" FontFamily="Segoe UI" Foreground="#FF1F332C" FontSize="14.667" FontWeight="Bold" VerticalAlignment="Center" Margin="64,-21,0,0"/>
+                <Button x:Name="btnBegin" Content="Continue" Margin="0,13,0,0" Width="110" HorizontalAlignment="Center" Click="btnBegin_Click" Style="{StaticResource btnprimary}" Height="29" />
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</sdk:ChildWindow>

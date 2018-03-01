@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="Ewav.MeansControl"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:GadgetSelector="clr-namespace:Ewav.ContextMenu;assembly=Ewav.ContextMenu.Menu"
+	xmlns:Common="clr-namespace:CommonLibrary;assembly=CommonLibrary"
+	mc:Ignorable="d"
+	d:DesignHeight="600" d:DesignWidth="400"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    DataContext="{Binding Source={StaticResource Locator}, Path=MeansViewModel}">
+    <UserControl.Resources>
+
+        <Style x:Key="HeaderCell" TargetType="Rectangle">
+            <Setter Property="Stroke" Value="#FFC4C4C4"/>
+            <Setter Property="StrokeThickness" Value="0.4"/>
+            <Setter Property="Fill" Value="#FFE5F2D9"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White" MouseRightButtonDown="LayoutRoot_MouseRightButtonDown" 
+		  MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown" Margin="0,0,-56,0">
+        <Grid x:Name="GadgetWindow" Background="White" MinWidth="450" >
+			<Grid.RowDefinitions>
+        		<RowDefinition Height="50"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="Auto"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+            <Rectangle x:Name="GWindow" Style="{StaticResource GWindow}" Stroke="{StaticResource WindowBrush}" StrokeThickness="4" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        	<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,11,0,0" d:LayoutOverrides="VerticalAlignment, GridBox">
+        		<TextBlock x:Name="GName" TextWrapping="Wrap" Text="Means" VerticalAlignment="Top" Margin="0,0,26,0" Height="Auto" HorizontalAlignment="Left" Foreground="#FF2B4360" FontSize="21.333"/>
+
+        		<Rectangle x:Name="GHeader" VerticalAlignment="Top" Height="4" Margin="0,2,0,0" StrokeThickness="0" Fill="#FF00B050" />	
+        	</StackPanel>
+        	<StackPanel HorizontalAlignment="Right" Margin="180,9,10,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.Column="1">
+        		<Button x:Name="FilterButton" Content=""  Template="{StaticResource FilterButton}" Cursor="Hand" Click="FilterButton_Click" Width="24" Height="24" IsEnabled="False" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+        		<Button x:Name="HeaderButton" Content="" Template="{StaticResource HeaderButton}" Cursor="Hand" Click="HeaderButton_Click"  Width="24" Height="24" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+        		<Button x:Name="ResizeButton" Content="" Template="{StaticResource resizebtn}" Cursor="Hand" Click="ResizeButton_Click" Width="24" Height="24" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+        		<Button x:Name="CloseButton" Content="" Template="{StaticResource CloseButton}" Cursor="Hand" Click="CloseButton_Click" Width="24" Height="24" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+        	</StackPanel>
+        	<Grid x:Name="GadgetContentGrid" Margin="0,5,0,0" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="2">
+        		<toolkit:Expander Margin="0,-45,131,0" VerticalAlignment="Top" 
+        			ExpandDirection="Down" IsExpanded="True" Style="{StaticResource ExpanderStyle2}" Canvas.ZIndex="999" HorizontalAlignment="Right" Width="188" x:Name="gadgetExpander">
+
+        			<toolkit:Expander.Header>
+        				<TextBlock Text="Edit Properties" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333" FontWeight="Normal" Foreground="White"/>
+        			</toolkit:Expander.Header>
+        			<Grid Background="#FF5C53AC" Margin="0,-2,1,10" HorizontalAlignment="Right">
+        				<StackPanel Margin="4,5,4,0" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="pnlMainFields" Width="180">
+        					<TextBlock x:Name="tblockMainVariable" TextAlignment="Center" Text="Field:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,0,0,0" FontSize="13.333" FontWeight="Normal" Foreground="White"  />
+        					<ComboBox x:Name="cbxField" Width="167" SelectedIndex="0" Height="25" Margin="5,3,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" />
+        					<toolkit:Expander x:Name="AdvancedOPtions"  Margin="0,10" ExpandDirection="Down" MouseLeftButtonDown="LayoutRoot_MouseRightButtonDown">
+        						<toolkit:Expander.Header>
+        							<TextBlock Text="Advanced Options" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333" Foreground="White"/>
+        						</toolkit:Expander.Header>
+        						<StackPanel Orientation="Vertical" Margin="2" MinHeight="155" VerticalAlignment="Top">
+        							<TextBlock x:Name="tblockWeightVariable" HorizontalAlignment="Left" TextAlignment="Center" Text="Weight:" Margin="0,5,0,1" VerticalAlignment="Top" FontSize="13.333" FontWeight="Normal" Foreground="White"  />
+        							<ComboBox x:Name="cbxFieldWeight" Width="167" HorizontalAlignment="Left" SelectedIndex="0" Margin="0,0,0,-19" VerticalAlignment="Top" />
+        							<TextBlock x:Name="tblockStrataVariable" HorizontalAlignment="Left" TextAlignment="Center" Text="Stratify by:" Margin="0,25,0,0"  VerticalAlignment="Top" FontSize="13.333" FontWeight="Normal" Foreground="White" />
+        							<ComboBox x:Name="cbxFieldStrata" Width="167" HorizontalAlignment="Left" SelectedIndex="0" Margin="0,2,0,0" VerticalAlignment="Top" />
+        							<TextBlock x:Name="tblockCrosstabVariable" HorizontalAlignment="Left" TextAlignment="Center" Text="Cross-tabulate by:" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="13.333" FontWeight="Normal" Foreground="White"  />
+        							<ComboBox x:Name="cbxFieldCrosstab" Width="167" HorizontalAlignment="Left" SelectedIndex="0" Margin="0,0,0,-126" VerticalAlignment="Top" />
+        							<CheckBox x:Name="checkboxShowANOVA" Content="Display ANOVA statistics" IsChecked="True" Margin="-6,33,0,-7" FontSize="13.333" FontWeight="Normal" Foreground="White" Padding="0" />
+        						</StackPanel>
+        					</toolkit:Expander>
+        				</StackPanel>
+
+        			</Grid>
+        		</toolkit:Expander>
+
+        		<StackPanel x:Name="spContent" Orientation="Vertical" Margin="10">
+        			<!--<Grid>
+                        <Common:WaitCursor x:Name="waitCursor" Width="25" Height="25" Visibility="Collapsed"  HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    </Grid>-->
+        			<TextBlock x:Name="txtGadgetDescription" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,6" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin" MaxWidth="650" Padding="0,0,10,0" />
+        			<StackPanel x:Name="pnlStatus" Height="58" MaxHeight="40" Width="Auto" Background="#FFf8d7e2" Visibility="Collapsed" VerticalAlignment="Top" Margin="5" >
+        				<StackPanel x:Name="pnlStatusTop" Height="2" Width="Auto" Background="#FFe4658e"/>
+        				<Image x:Name="ErrorIcon" Source="../../Images/error.png" Width="18" Height="18" HorizontalAlignment="Left" Margin="5,1,5,0" VerticalAlignment="Center"/>
+        				<TextBlock x:Name="txtStatus" Text="Error: Exception occurred." TextWrapping="Wrap" Margin="30,-15,5,5" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center"/>
+        			</StackPanel>
+        			<StackPanel x:Name="panelMain" HorizontalAlignment="Left" VerticalAlignment="Top">
+        				<!--<Grid>
+                        <Common:WaitCursor x:Name="waitCursor" Width="25" Height="25" Visibility="Collapsed"  HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    </Grid>-->
+        				<Grid x:Name="grdMeans" Width="Auto" HorizontalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed">
+        					<Grid.ColumnDefinitions>
+        						<ColumnDefinition Width="*"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="100"/>
+        					</Grid.ColumnDefinitions>
+        				</Grid>
+        			</StackPanel>
+
+        		</StackPanel>
+        		<Grid x:Name="waitCursor" Background="#36C4C4C4" Height="Auto" Visibility="Collapsed">
+        			<toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100" />
+        		</Grid>
+        		<!--<StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,10" Canvas.ZIndex="99" d:IsLocked="True">
+                <toolkit:Expander x:Name="Properties_Expander" Header="Edit Properties"  ExpandDirection="Down" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Black" Padding="4,2" Width="165" d:IsHidden="True" Visibility="Collapsed">
+                    <toolkit:Expander.Effect>
+                        <DropShadowEffect Color="#FF494848" ShadowDepth="4" BlurRadius="12" Opacity="0.79"/>
+                    </toolkit:Expander.Effect>
+                    <toolkit:Expander.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF1F7D4" Offset="0"/>
+                            <GradientStop Color="#FFF1F7D6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </toolkit:Expander.Background>
+                    <StackPanel Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <TextBlock x:Name="tblockMainVariable" TextAlignment="Center" Text="Field:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,0,0,0"  />
+                        <ComboBox x:Name="cbxField" Width="140" SelectedIndex="0" Height="25" Margin="5,3,0,0" VerticalAlignment="Top" Padding="0" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left"/>
+                        <toolkit:Expander x:Name="AdvancedOPtions"  Header="Advanced Options" Margin="0,10,0,0" ExpandDirection="Down">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,8" MinHeight="249">
+                                <TextBlock x:Name="tblockWeightVariable" HorizontalAlignment="Left" TextAlignment="Center" Text="Weight:" Margin="0,5,0,1"  />
+                                <ComboBox x:Name="cbxFieldWeight" Width="140" HorizontalAlignment="Left" SelectedIndex="0" Margin="0,0,0,-19" VerticalAlignment="Bottom" />
+                                <TextBlock x:Name="tblockStrataVariable" HorizontalAlignment="Left" TextAlignment="Center" Text="Stratify by:" Margin="0,0,0,-40"  VerticalAlignment="Bottom" />
+                                <ComboBox x:Name="cbxFieldStrata" Width="140" HorizontalAlignment="Left" SelectedIndex="0" Margin="0,0,0,-60" VerticalAlignment="Bottom" />
+                                <CheckBox x:Name="checkboxAllValues" Margin="0,0,0,-82" Content="Display all list values"  HorizontalAlignment="Left" IsEnabled="false" VerticalAlignment="Bottom"/>
+                                <CheckBox x:Name="checkboxCommentLegalLabels" Margin="0,0,0,-104" Content="Display list labels"  HorizontalAlignment="Left" IsEnabled="false" VerticalAlignment="Bottom"/>
+                                <CheckBox x:Name="checkboxSortHighLow" Margin="0,0,0,-126" Content="Sort high to low" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                                <CheckBox x:Name="checkboxConfLimits" Margin="0,0,0,-148" Content="Confidence limits" HorizontalAlignment="Left" IsChecked="True" VerticalAlignment="Bottom" />
+                                <CheckBox x:Name="checkboxCumPercent" Margin="0,0,0,-170" Content="Cumulative percentage" HorizontalAlignment="Left" IsChecked="True" VerticalAlignment="Bottom" />
+                                <CheckBox x:Name="checkboxIncludeMissing" Margin="0,0,0,-192" Content="Include missing values" HorizontalAlignment="Left" IsChecked="False" VerticalAlignment="Bottom" />
+                                <TextBlock x:Name="tblockMaxRowsLabel" HorizontalAlignment="Left" TextAlignment="Center" Text="Max rows to display:" Margin="0,0,0,-213"  VerticalAlignment="Bottom"  />
+                            </StackPanel>
+                        </toolkit:Expander>
+                    </StackPanel>
+                </toolkit:Expander>
+            </StackPanel>-->
+
+
+
+        	</Grid>
+
+
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<sdk:ChildWindow x:Class="Ewav.RecodedVariable"
+		   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+		   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+		   mc:Ignorable="d" 
+		   Title="Recoded Variable" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource ChildWindowStyle1}">
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" MinHeight="135" />
+		</Grid.RowDefinitions>
+		<StackPanel Margin="0" Orientation="Vertical" Grid.RowSpan="2" d:LayoutOverrides="Height">
+			<sdk:Label x:Name="lblSource" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Source Field:"/>
+			<ComboBox x:Name="cbxSourceField" HorizontalAlignment="Left" Height="24" Margin="6,0,0,0" Width="224" SelectionChanged="cbxSourceField_SelectedIndexChanged"/>
+			<sdk:Label x:Name="lblDestination" HorizontalAlignment="Left" Margin="6,5,0,0" Content="Destination Field:"/>
+			<TextBox x:Name="txtDestinationField" HorizontalAlignment="Left" Margin="6,0,0,0" TextWrapping="Wrap" Width="224"/>
+			<sdk:Label x:Name="lblType" HorizontalAlignment="Left" Margin="6,5,0,0" Content="Destination Field Type:"/>
+			<ComboBox x:Name="cbxFieldType" HorizontalAlignment="Left" Height="24" Margin="6,0,0,0" Width="224" SelectionChanged="cbxFieldType_SelectionChanged"/>
+			<CheckBox x:Name="checkboxMaintainSortOrder" Content="Maintain sort order where appropriate" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="13.333" Padding="0"/>
+			<CheckBox x:Name="checkboxUseWildcards" Content="Use wildcards" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="13.333" Padding="0"/>
+			<sdk:DataGrid x:Name="dataGridViewRecode" Margin="6,0,10,0" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Background="#FFFFFFFF" RowHeight="26" AutoGenerateColumns="False" DataContext="{Binding}" Height="206" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" KeyDown="dataGridViewRecode_KeyDown"/>
+			<sdk:Label x:Name="lblElseValue" HorizontalAlignment="Left" Margin="6,5,0,0" Content="Else:" VerticalAlignment="Bottom"/>
+			<TextBox x:Name="txtElseValue" HorizontalAlignment="Left" Margin="6,0,0,0" TextWrapping="Wrap" Width="398" VerticalAlignment="Bottom" BorderThickness="1"/>
+
+			<Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Margin="0,15,219,0" HorizontalAlignment="Center" Height="28" Style="{StaticResource btnprimary}" d:LayoutOverrides="VerticalAlignment, Height"/>
+			<Button x:Name="FillRangesButton" Content="Fill Ranges" Width="101" HorizontalAlignment="Center" Margin="0,-28,-4,0" Height="28" Click="FillRangesButton_Click" Style="{StaticResource btnprimary}" d:LayoutOverrides="VerticalAlignment, Height"/>
+			<Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="28" HorizontalAlignment="Center" Margin="0,-28,-228,0" Style="{StaticResource btnprimary}" d:LayoutOverrides="VerticalAlignment, Height"/>
+		</StackPanel>
+	</Grid>
+</sdk:ChildWindow>

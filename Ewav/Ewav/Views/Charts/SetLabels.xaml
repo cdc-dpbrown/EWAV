@@ -1,0 +1,165 @@
+﻿<sdk:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" mc:Ignorable="d" x:Class="Ewav.SetLabels" 
+           Title="Display Options" Style="{StaticResource ChildWindowStyle1}">
+    <StackPanel x:Name="LayoutRoot" HorizontalAlignment="Left" VerticalAlignment="Top">
+		<StackPanel x:Name="spGadgetHeader" Orientation="Horizontal" VerticalAlignment="Top" Width="556">
+			<Border x:Name="brdGadgetHead" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#FFC4C4C4" Padding="5" CornerRadius="5" HorizontalAlignment="Left" Width="556" Margin="0,0,0,11">
+				<StackPanel x:Name="spHeader" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
+					<TextBlock TextAlignment="Center" Text="Gadget Header:" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"  d:LayoutOverrides="HorizontalAlignment" FontWeight="Bold"  />
+					<TextBox x:Name="txtbxGadgetHeader" VerticalAlignment="Top" Margin="0" HorizontalAlignment="Left" Width="544" MaxLength="200" />
+					<TextBlock TextAlignment="Center" Text="Gadget Description:" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"  />
+					<!--<RichTextBox x:Name="rtxtbxGadgetDescription" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13.333" Width="544" VerticalScrollBarVisibility="Visible">
+						<Paragraph><Run Text=""/></Paragraph>
+					</RichTextBox>-->
+                    <TextBox x:Name="txtDescription" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13.333" Width="544"  AcceptsReturn="True" Height="80" VerticalScrollBarVisibility="Visible"  TextWrapping="Wrap"/>
+				</StackPanel> 
+			</Border>
+		</StackPanel>
+		<StackPanel x:Name="spChartProperties" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="556">
+			<Border x:Name="brdChartColor" HorizontalAlignment="Left" Margin="0,0,8,0" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FFC4C4C4" Padding="5" CornerRadius="5" Width="180" Height="224">
+				<StackPanel x:Name="spChartColor" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<TextBlock TextAlignment="Center" Text="Colors and Styles" Margin="0,0,0,8" HorizontalAlignment="Left" VerticalAlignment="Top"  d:LayoutOverrides="HorizontalAlignment" FontWeight="Bold"  />
+					<TextBlock TextAlignment="Center" Text="Color Palette:" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"  d:LayoutOverrides="HorizontalAlignment"  />
+                  
+                    <ComboBox x:Name="cbxColorPalette" HorizontalAlignment="Left" Width="166" Margin="0" SelectionChanged="cbxColorPalette_SelectionChanged"  >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5,0,5">
+                                    <Image Source="{Binding ImageURL}" Width="160"/>
+                                    <TextBlock Text="{Binding ImageText}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <!--<ComboBoxItem >Tag="Atlantic"
+                            <StackPanel Orientation="Horizontal"> <Image Source="../../Images/ColorPalette/Atlantic.png" Height="16"/></StackPanel>
+                           
+                        </ComboBoxItem>-->
+                        <!--<ComboBoxItem Background="LightCoral" Foreground="Red"
+             FontFamily="Verdana" FontSize="12" FontWeight="Bold">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="../../Images/ColorPalette/Atlantic.png" Height="30"></Image>
+                                <TextBlock Text="Coffie"></TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>-->
+                        <!--<ComboBoxItem Tag="Breeze">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Breeze.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="k">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Componenart.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Deep">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Deep.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Earth">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Earth.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Evergreen">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Evergreen.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Heatwave">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Heatwave.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Montreal">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Montreal.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Pastel">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Pastel.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Renaissance">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Rennaisance.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="SharePoint">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Sharepoint.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Study">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/Study.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="VibrantA">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/VibrantA.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="VibrantB">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/VibrantB.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="VibrantC">
+                            <StackPanel>
+                                <Image Source="../../Images/ColorPalette/VibrantC.png" Height="16"/>
+                                </StackPanel>
+                        </ComboBoxItem>-->
+
+                    </ComboBox>
+                    
+                    <CheckBox x:Name="cbDiffColor" Content="Use Different Bar Colors" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" FontSize="13.333" Margin="-6,5,0,0"/>
+					<TextBlock x:Name="lblSpaceBetweenBars" TextAlignment="Center" Text="Space Between Bars:" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+					<ComboBox x:Name="cbxBarSpace" HorizontalAlignment="Left" Width="166" SelectedIndex="0" Margin="0">
+						<ComboBoxItem Content="None"/>
+						<ComboBoxItem Content="Small"/>
+						<ComboBoxItem Content="Medium"/>
+						<ComboBoxItem Content="Large"/>
+					</ComboBox>
+					<TextBlock TextAlignment="Center" Text="Width:" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+					<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Height:" Margin="99,-18,0,0" VerticalAlignment="Top"  />
+					<toolkit:NumericUpDown x:Name="nudWidth" Style="{StaticResource NumericUpDownStyle1}" Margin="0" Width="63" Maximum="2000" Minimum="400" Increment="10" Value="800" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF3F3F3F" d:LayoutOverrides="Height"/>
+					<toolkit:NumericUpDown x:Name="nudHeight" HorizontalAlignment="Left" Style="{StaticResource NumericUpDownStyle1}" Margin="99,-22,0,0" Width="65" Maximum="2000" Minimum="200" Increment="10" Value="500" VerticalAlignment="Top" Foreground="#FF3F3F3F" d:LayoutOverrides="Height"/>
+				</StackPanel>
+			</Border>
+			<Border x:Name="brdChartLegend" HorizontalAlignment="Left" Margin="0,0,8,0" VerticalAlignment="Top" BorderBrush="#FFC4C4C4" BorderThickness="1" CornerRadius="5" Padding="5" Height="224" Width="180" >
+				<StackPanel x:Name="spChart_Legend" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<TextBlock TextAlignment="Center" Text="Legend Properties" Margin="0,0,0,8" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"  />
+					<CheckBox x:Name="cbShowLegend" Content="Show Legend" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" IsChecked="True" FontSize="13.333" Margin="-6,0,0,0"/>
+					<CheckBox x:Name="cbShowLegendVariable" Content="Show Variable Names" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" IsChecked="True" FontSize="13.333" Margin="-6,0,0,0" Visibility="Collapsed"/>
+					<TextBlock TextAlignment="Center" Text="Legend Position:" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+					<ComboBox x:Name="cbxLegendPosition" HorizontalAlignment="Left" Width="166" SelectedIndex="0"  Margin="0"  >
+						<ComboBoxItem Content="Top"/>
+						<ComboBoxItem Content="Left"/>
+						<ComboBoxItem Content="Right" IsSelected="True"/>
+						<ComboBoxItem Content="Bottom"/>
+					</ComboBox>
+				</StackPanel>
+			</Border>
+			<Border x:Name="brdChartTitle" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#FFC4C4C4" BorderThickness="1" Width="180" Height="224" Padding="5">
+				<StackPanel x:Name="spChartTitle" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167">
+					<TextBlock TextAlignment="Center" Text="Chart Titles" Margin="0,0,0,8" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"  />
+					<sdk:Label Height="16" Margin="0,6,0,0" x:Name="lblChrtTitle" VerticalAlignment="Top" Width="80" Content="Chart Title:" FontWeight="Normal" HorizontalAlignment="Left" />
+					<TextBox x:Name="txtbxChrtTitle" VerticalAlignment="Top" Margin="0,2,0,0" />
+					<sdk:Label Content="X-Axis Label:" Height="16" x:Name="lblxaxis" VerticalAlignment="Top" Width="80" FontWeight="Normal" HorizontalAlignment="Left" Margin="0,5,0,0" />
+					<TextBox Margin="0,2,0,0" x:Name="txtboxXaxis" VerticalAlignment="Top"      />
+					<sdk:Label Content="Y-Axis Label:" Height="16" Margin="0,5,0,0" x:Name="lblyaxis" VerticalAlignment="Top" Width="80" FontWeight="Normal" HorizontalAlignment="Left" />
+					<TextBox Margin="0,2,0,0" x:Name="txtboxYaxis" VerticalAlignment="Top"          />
+				</StackPanel>
+			</Border>
+		</StackPanel>
+		<StackPanel x:Name="spOKCancel" HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top" Margin="0,12,0,0">
+			<Button x:Name="OKButton" Content="OK" Click="OKButton_Click" VerticalAlignment="Bottom" Style="{StaticResource btnprimary}" Height="27" Width="80" HorizontalAlignment="Left" />
+			<Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Style="{StaticResource btnprimary}" Height="27" HorizontalAlignment="Left" Width="70" Margin="112,-27,0,0" VerticalAlignment="Top" />
+		</StackPanel>
+	</StackPanel>
+</sdk:ChildWindow>

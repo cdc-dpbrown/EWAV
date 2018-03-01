@@ -1,0 +1,163 @@
+﻿<UserControl
+	x:Class="Ewav.MxNTableControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:GadgetSelector="clr-namespace:Ewav.ContextMenu;assembly=Ewav.ContextMenu.Menu"
+	xmlns:Common="clr-namespace:CommonLibrary;assembly=CommonLibrary"
+	mc:Ignorable="d"
+	d:DesignHeight="600" d:DesignWidth="600"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+	DataContext="{Binding Source={StaticResource Locator}, Path= MxNViewModel}" >
+
+    <UserControl.Resources>
+
+        <Style x:Key="HeaderCell" TargetType="Rectangle">
+            <Setter Property="Stroke" Value="#FFC4C4C4"/>
+            <Setter Property="StrokeThickness" Value="0.4"/>
+            <Setter Property="Fill" Value="#FFE5F2D9"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White" MouseRightButtonDown="LayoutRoot_MouseRightButtonDown" 
+		  MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown">
+
+
+
+
+        <Grid x:Name="GadgetWindow" Background="White" MinWidth="500" >
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="50"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="Auto"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+            <Rectangle x:Name="GWindow" Style="{StaticResource GWindow}" Stroke="{StaticResource WindowBrush}" StrokeThickness="4" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        	<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,11,0,0" d:LayoutOverrides="VerticalAlignment, GridBox">
+        		<TextBlock x:Name="GName" TextWrapping="Wrap" Text="M x N Table" VerticalAlignment="Top" Margin="0,0,26,0" Height="Auto" HorizontalAlignment="Left" Foreground="#FF2B4360" FontSize="21.333"/>
+
+        		<Rectangle x:Name="GHeader" VerticalAlignment="Top" Height="4" Margin="0,2,0,0" StrokeThickness="0" Fill="#FF00B050" />	
+        	</StackPanel>
+        	<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Margin="180,9,10,0" Grid.Column="1">
+        		<Button x:Name="FilterButton" Content=""  Template="{StaticResource FilterButton}" Cursor="Hand" Click="FilterButton_Click" Width="24" Height="24" IsEnabled="False" >
+                	<Button.Effect>
+                		<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+                	</Button.Effect>
+                </Button>
+                <Button x:Name="HeaderButton" Content="" Template="{StaticResource HeaderButton}" Cursor="Hand" Click="HeaderButton_Click"  Width="24" Height="24" >
+                	<Button.Effect>
+                		<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+                	</Button.Effect>
+                </Button>
+        		<Button x:Name="ResizeButton" Content="" Template="{StaticResource resizebtn}" Cursor="Hand" Click="ResizeButton_Click" Width="24" Height="24" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+                <Button x:Name="CloseButton" Content="" Template="{StaticResource CloseButton}" Cursor="Hand" Click="CloseButton_Click" Width="24" Height="24" >
+        			<Button.Effect>
+        				<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+        			</Button.Effect>
+        		</Button>
+        	</StackPanel>
+        	<Grid x:Name="GadgetContentGrid" Margin="0,5,0,0" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="2">
+        		<toolkit:Expander Margin="0,-45,131,0" VerticalAlignment="Top" 
+        			ExpandDirection="Down" IsExpanded="True" Style="{StaticResource ExpanderStyle2}" Canvas.ZIndex="999" HorizontalAlignment="Right" Width="188" x:Name="gadgetExpander">
+
+        			<toolkit:Expander.Header>
+        				<TextBlock Text="Edit Properties" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333" FontWeight="Normal" Foreground="White"/>
+        			</toolkit:Expander.Header>
+        			<Grid Background="#FF5C53AC" Margin="0,-2,1,10" Width="178"  x:Name="editProperties" HorizontalAlignment="Right">
+        				<StackPanel Margin="4,0,4,10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="163">
+        					<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Exposure:" Margin="0,5,0,0" Foreground="White"  />
+        					<ComboBox x:Name="cbxExposureField" Width="157" HorizontalAlignment="Left" SelectedIndex="0" />
+        					<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Outcome:" Margin="0,5,0,0" Foreground="White"  />
+        					<ComboBox x:Name="cbxOutcomeField" Width="157" HorizontalAlignment="Left" SelectedIndex="0" />
+        					<toolkit:Expander x:Name="AdvancedOptions" Margin="0,10" ExpandDirection="Down" MouseLeftButtonDown="LayoutRoot_MouseRightButtonDown">
+        						<toolkit:Expander.Header>
+        							<TextBlock Text="Advanced Options" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333" Foreground="White" FontWeight="Normal"/>
+        						</toolkit:Expander.Header>
+        						<StackPanel Orientation="Vertical" Margin="0,0,0,2" MinHeight="230" VerticalAlignment="Top" HorizontalAlignment="Center">
+        							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Weight:" Margin="0,5,0,0" Foreground="White"  />
+        							<ComboBox x:Name="cbxFieldWeight" Width="157" HorizontalAlignment="Left" SelectedIndex="0" />
+        							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Stratify by:" Margin="0,5,0,0" Foreground="White"  />
+        							<ComboBox x:Name="cbxFieldStrata" Width="157" HorizontalAlignment="Left" SelectedIndex="0" />
+
+        							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Max rows to display:" Margin="0,5,0,0" Foreground="White"  />
+        							<TextBox x:Name="txtMaxRows" Width="60" HorizontalAlignment="Left" Text="200" Margin="0, 0, 0, 10" TextChanged="txtMaxRows_TextChanged"  KeyDown="btn_Rows_KeyDown"/>
+        							<Button x:Name="btn_Rows" Content="" VerticalAlignment="Top" Style="{StaticResource UpdateMaxRows}" Width="17" Height="17" Cursor="Hand" HorizontalAlignment="Left" ToolTipService.ToolTip="Update rows displayed" Click="Button_Click" Margin="66,-31,0,0" d:IsLocked="True"/>
+        							<!--PreviewTextInput="txtMaxColumns_PreviewTextInput"></TextBox>-->
+
+        							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Max columns to display:" Margin="0,5,0,0" Foreground="White"  />
+        							<!--PreviewTextInput="txtMaxColumns_PreviewTextInput"></TextBox>-->
+        							<TextBox x:Name="txtMaxColumns" Width="60" HorizontalAlignment="Left" Text="20" Margin="0, 0, 0, 10" TextChanged="txtMaxRows_TextChanged" KeyDown="btn_Rows_KeyDown"/>
+        							<Button x:Name="btn_Cols" Content="" VerticalAlignment="Top" Style="{StaticResource UpdateMaxRows}" Width="17" Height="17" Cursor="Hand" HorizontalAlignment="Left" ToolTipService.ToolTip="Update rows displayed" Click="Button_Click" Margin="66,-30,0,0"/>
+        							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Max column name length:" Margin="0,5,0,0" Foreground="White"  />
+        							<TextBox x:Name="txtMaxColumnLength" Width="60" HorizontalAlignment="Left" Text="24" Margin="0, 0, 0, 10" TextChanged="txtMaxRows_TextChanged" KeyDown="btn_Rows_KeyDown"/>
+        							<!--PreviewTextInput="txtMaxColumns_PreviewTextInput"></TextBox>-->
+        							<Button x:Name="btn_Length" Content="" VerticalAlignment="Top" Style="{StaticResource UpdateMaxRows}" Width="17" Height="17" Cursor="Hand" HorizontalAlignment="Left" ToolTipService.ToolTip="Update rows displayed" Click="Button_Click" Margin="66,-31,0,0"/>
+        							<CheckBox x:Name="checkboxIncludeMissing" Margin="-6,5,0,0" Content="Include missing values" HorizontalAlignment="Left" IsChecked="False" Foreground="#FFFFFCFC" FontSize="13.333" Padding="-1,0,0,0" />
+        							<CheckBox x:Name="checkboxOutcomeContinuous" Margin="0,5,0,0" Content="Outcome is continuous"  HorizontalAlignment="Left" IsEnabled="false" Visibility="Collapsed"/>
+        						</StackPanel>
+        					</toolkit:Expander>
+        					<Button x:Name="btnGo" Click="btnGo_Click" Margin="0,0,0,0" Content="Run Gadget" Style="{StaticResource btnSec}" HorizontalAlignment="Center" Width="105" Padding="4,5" Height="28"/>
+        				</StackPanel>
+
+        			</Grid>
+        		</toolkit:Expander>
+
+        		<StackPanel x:Name="spContent" Orientation="Vertical" Margin="10" Visibility="Collapsed">
+        			<!--<Grid>
+							<Common:WaitCursor x:Name="waitCursor" Width="25" Height="25" Visibility="Collapsed"  HorizontalAlignment="Right" VerticalAlignment="Top"/>
+						</Grid>-->
+        			<TextBlock x:Name="txtGadgetDescription" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,6" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin" MaxWidth="650" Padding="0,0,10,0" />
+        			<StackPanel x:Name="pnlStatus" Height="58" MaxHeight="40" Width="Auto" Background="#FFf8d7e2" Visibility="Collapsed" VerticalAlignment="Top" Margin="0,5">
+        				<StackPanel x:Name="pnlStatusTop" Height="2" Width="Auto" Background="#FFe4658e"/>
+        				<Image x:Name="ErrorIcon" Source="../../Images/error.png" Width="18" Height="18" HorizontalAlignment="Left" Margin="5,1,5,0" VerticalAlignment="Center"/>
+        				<TextBlock x:Name="txtStatus" Text="Error: Exception occurred." TextWrapping="Wrap" Margin="30,-15,5,5" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center"/>
+        			</StackPanel>
+        			<StackPanel x:Name="panelMain" HorizontalAlignment="Left" VerticalAlignment="Top">
+        				<!--<Grid>
+							<Common:WaitCursor x:Name="waitCursor" Width="25" Height="25" Visibility="Collapsed"  HorizontalAlignment="Right" VerticalAlignment="Top"/>
+						</Grid>-->
+        				<Grid x:Name="grdFreq" Width="Auto" HorizontalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed">
+        					<Grid.ColumnDefinitions>
+        						<ColumnDefinition Width="*"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="100"/>
+        					</Grid.ColumnDefinitions>
+        				</Grid>
+        				<TextBlock x:Name="txtConfLimits" HorizontalAlignment="Center" Text="" Margin="0,00,0,0" FontSize="14" FontWeight="Bold" Visibility="Collapsed"/>
+        				<Grid x:Name="grdConf" Width="250" HorizontalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed">
+        					<Grid.ColumnDefinitions>
+        						<ColumnDefinition Width="*"/>
+        						<ColumnDefinition Width="50"/>
+        						<ColumnDefinition Width="50"/>
+        					</Grid.ColumnDefinitions>
+        				</Grid>
+        			</StackPanel>
+        			<Grid x:Name="grdTable" Width="Auto" HorizontalAlignment="Center" Margin="0,52,0,0" Visibility="Visible"/>
+        		</StackPanel>
+        		<Grid x:Name="waitCursor" Background="#36C4C4C4" Height="Auto" Visibility="Collapsed">
+        			<toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100" />
+        		</Grid>
+        	</Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

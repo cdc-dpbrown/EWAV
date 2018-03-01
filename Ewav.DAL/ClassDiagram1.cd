@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Ewav.DAL.DaoFatories">
+    <Position X="3" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DaoFatories.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ewav.DAL.SqlServer.SqlServerDaoFactory" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SqlServer\SqlServerDaoFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ewav.DAL.SqlServer.SqlServerMetaDataDao" Collapsed="true">
+    <Position X="0.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiEAAAAAAEAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlServer\SqlServerMetaDataDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ewav.DAL.SqlServer.SqlServerRawDataDao" Collapsed="true">
+    <Position X="2.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgECAAAAAEAAAEAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlServer\SqlServerRawDataDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ewav.DAL.MySql.MySqlRawDataDao" Collapsed="true">
+    <Position X="7.25" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AFAAACAAAAAEAAAEEAAAAAABAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>MySql\MySqlRawDataDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ewav.DAL.MySql.MySqlMetaDataDao" Collapsed="true">
+    <Position X="5.25" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAiEAAAAAAEAAAAIAAAAAAAAAAAAAEAAAAABAAAAAA=</HashCode>
+      <FileName>MySql\MySqlMetaDataDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ewav.DAL.MySql.MySqlDaoFactory" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MySql\MySqlDaoFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Ewav.DAL.Interfaces.IMetaDataDao" Collapsed="true">
+    <Position X="4.25" Y="4.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAEAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMetaDataDao.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ewav.DAL.Interfaces.IRawDataDao" Collapsed="true">
+    <Position X="0.75" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAAAAAEAAAEAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRawDataDao.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ewav.DAL.Interfaces.IDaoFactory" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Interfaces\IDaoFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ewav.DAL.Interfaces.ICanvas">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAIAAA=</HashCode>
+      <FileName>Interfaces\ICanvas.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Ewav.DAL.DataBaseTypeEnum" Collapsed="true">
+    <Position X="7.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>DataBaseTypeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

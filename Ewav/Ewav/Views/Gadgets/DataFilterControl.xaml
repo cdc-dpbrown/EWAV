@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="Ewav.DataFilterControl" 
+    xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' 
+    xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+    xmlns:d='http://schemas.microsoft.com/expression/blend/2008' 
+    xmlns:mc='http://schemas.openxmlformats.org/markup-compatibility/2006' 
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+	xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    mc:Ignorable='d' 
+             xmlns:uc="clr-namespace:Ewav"
+    d:DesignWidth='740' d:DesignHeight='480'>
+    <UserControl.Resources>
+
+        <SolidColorBrush x:Key="rctBK" Color="#FFB8DDE7"/>
+        <SolidColorBrush x:Key="rctBr" Color="#FF00AEEF"/>
+        <ControlTemplate x:Key="btnRemove" TargetType="Button">
+            <Grid>
+                <Image Height="16" Source="remove.png" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16"/>
+            </Grid>
+        </ControlTemplate>
+        <System:Double x:Key="rctStroke">0.4</System:Double>
+        <ControlTemplate x:Key="btnAdd" TargetType="Button">
+            <Grid Width="58">
+                <Image Height="16" Source="add.png" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Left" Width="16" Margin="2,0,0,0"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Add" Width="30" FontWeight="Bold" VerticalAlignment="Center" Margin="22,0,0,0"/>
+            </Grid>
+        </ControlTemplate>
+        <Storyboard x:Name="rotatearrow">
+            <DoubleAnimation Duration="0:0:0.5" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="imgSlide" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="rotatearrow1">
+            <DoubleAnimation Duration="0:0:0.5" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="imgSlide" d:IsOptimized="True"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White" MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown" MouseRightButtonDown="LayoutRoot_MouseRightButtonDown" >
+        <!--<Canvas x:Name="Slider" RenderTransformOrigin="0.5,0.5" Cursor="Hand" Margin="-629,-209,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+			<Canvas.Effect>
+				<DropShadowEffect Color="#FF646161" ShadowDepth="2"/>
+			</Canvas.Effect>
+			<Canvas.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Canvas.RenderTransform>-->
+
+
+        <Border x:Name="Slider" Background="#FF5C53AC" CornerRadius="0,0,0,0" Padding="5" BorderBrush="#FF5C53AC" BorderThickness="1" Width="673" Height="261" TextOptions.TextFormattingMode="Display" >
+            <Border.Effect>
+                <DropShadowEffect Color="#FF646161" ShadowDepth="2"/>
+            </Border.Effect>
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid VerticalAlignment="Top">
+            	
+                <TextBlock x:Name="VerticalHeading" Text="Data Filter (0)" FontWeight="Normal" 
+				RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalAlignment="Right" 
+				VerticalAlignment="Center" Margin="0,40,-52,0" Width="123" Height="23" Grid.Row="3" 
+				FontSize="16" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Animated" TextOptions.TextRenderingMode="ClearType">
+						<TextBlock.RenderTransform>
+							<CompositeTransform Rotation="90"/>
+						</TextBlock.RenderTransform>
+                </TextBlock>
+                <Image x:Name="imgSlide" HorizontalAlignment="Right" Height="16" Source="/Ewav;component/Images/arrow.png" Stretch="Fill" Width="12" VerticalAlignment="Top" Margin="0,62,3,0" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+                    <Image.RenderTransform>
+                        <CompositeTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+				<Rectangle x:Name="RectSlideIn" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="260" Margin="0,-5,-5,-7" Fill="#00EBEBEB" MouseLeftButtonDown="RectSlideIn_MouseLeftButtonDown" Cursor="Hand" />
+                <Border Margin="0" Background="#FFF7F3F3" Padding="0" CornerRadius="5" HorizontalAlignment="Left" Width="635">
+
+                    <StackPanel Orientation="Vertical" Width="621" Margin="10,10,0,10" Height="242" HorizontalAlignment="Left">
+                        <StackPanel x:Name="pnlGuidedMode" Height="192" Visibility="Visible">
+                            <TextBlock x:Name="filterCount" TextWrapping="Wrap" Visibility="Visible" Text="Data Filter (0)" FontWeight="Normal" RenderTransformOrigin="0.5,0.5" TextOptions.TextFormattingMode="Display" FontFamily="Segoe UI" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+                            <ScrollViewer x:Name="scroll_content" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" DataContext="{Binding}" Height="166" Margin="0,0,2,0">
+                                <StackPanel Grid.Row="0" x:Name="pnlContainer" Margin="0">
+                                    <uc:EwavFilter x:Name="FilterControl"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                        <StackPanel x:Name="pnlAdvancedMode" d:LayoutOverrides="GridBox" HorizontalAlignment="Left" Margin="1,0,0,0" Width="583"  Visibility="Collapsed">
+                            <TextBlock Text="Advanced Filter Mode" Margin="0,-1,0,3" FontSize="16" />
+                            <TextBlock Text="Type the desired data filter string into the text box below. Several examples are provided:" 
+									TextWrapping="Wrap" 
+									Width="500"
+									HorizontalAlignment="Left"
+									Margin="3,0,0,3" FontSize="10.667" />
+
+                            <TextBlock Text="  1. Numeric data:   (AGE &gt;= 15) AND (AGE &lt;= 45)" 
+									TextWrapping="Wrap" 
+									Width="500"
+									HorizontalAlignment="Left" FontSize="10.667" />
+                            <TextBlock Text="  2. Text data:   (LastName LIKE '%sen') OR (LastName = 'Smith')" 
+									TextWrapping="Wrap" 
+									Width="500"
+									HorizontalAlignment="Left" FontSize="10.667" />
+                            <TextBlock Text="  3. Date data:   (DOB &gt;= #01/01/2000#) AND (DOB &lt;= #12/31/2000 23:59:59#)" 
+									TextWrapping="Wrap" 
+									Width="500"
+									HorizontalAlignment="Left" FontSize="10.667" />
+                            <TextBlock Text="  4. Boolean data:   (ILL = true)" 
+									TextWrapping="Wrap" 
+									Width="500"
+									HorizontalAlignment="Left" FontSize="10.667" />
+
+
+                            <TextBox x:Name="txtAdvancedFilter" Height="40" TextWrapping="Wrap" Margin="0,12,0,0" TextChanged="txtAdvancedFilter_TextChanged" />
+                            <TextBox x:Name="txtAdvancedFilterStatus" IsReadOnly="True" Margin="0, 5, 0, 0" TextWrapping="Wrap" />
+
+                            <!--<Grid x:Name="grdAdvancedModeButtons" Visibility="Collapsed" Click="btnAdvancedMode_Click">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="140"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Button x:Name="btnApplyAdvancedFilter" Grid.Row="1" Grid.Column="0" Width="120" Content="Apply Filter" HorizontalAlignment="Left" Click="btnApplyAdvancedFilter_Click"/>
+                                <Button x:Name="btnGuidedMode1"          Grid.Row="1" Grid.Column="1" Width="120" Content="Guided Mode" HorizontalAlignment="Left" />
+                            </Grid>-->
+
+
+                        </StackPanel>
+                        <StackPanel x:Name="pnlBtns" Margin="0,8,3,0" Orientation="Horizontal" d:LayoutOverrides="Width">
+                            <Button Content="Apply Filter" Width="106" VerticalAlignment="Top" Click="btnApply_Click" x:Name="btnApply" Style="{StaticResource btnprimary}" Height="28" />
+                            <Button Content="Clear All" Width="77" Margin="20,0,0,0" x:Name="btnClear" Click="btnClear_Click" Style="{StaticResource btnprimary}" Height="28"/>
+                            <Button x:Name="btnAdvMode" Content="Advanced Mode" HorizontalAlignment="Right" Width="152" VerticalAlignment="Bottom" Margin="251,0,0,0" Click="btnAdvMode_Click" Style="{StaticResource btnprimary}" Height="28"/>
+                            <Button x:Name="btnGuidedMode" Content="Guided Mode" HorizontalAlignment="Right" Width="152" VerticalAlignment="Bottom" Margin="251,0,0,0" Click="btnGuidedMode_Click" Style="{StaticResource btnprimary}" Height="28"/>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                </Border>
+            </Grid>
+        </Border>
+        <!--</Canvas>-->
+
+
+
+    </Grid>
+</UserControl>

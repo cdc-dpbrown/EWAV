@@ -1,0 +1,117 @@
+﻿<div ng-controller="CanvasCtrl">
+    <div>
+        <h3>
+            {{canvasName}}
+        </h3>
+        <!-- <h4>
+            {{datasourceName}}
+        </h4>-->
+        <!-- <h5>{{recordCount}} </h5>-->
+        <br/>
+    </div>
+    <tabset>
+        <tab heading=Gadgets>
+            <div ng-controller="GadgetCtrl">
+                <ul class="dropdwn1">
+                    <li role="presentation" class="dropdown">
+                        <button type="button"
+                                class="btn btn-default btn-sm dropdown-toggle">
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                        </button>
+                        <!--<a class="dropdown-toggle">{{gadget.typeName}}</a>-->
+                        <ul class="dropdown-menu">
+                            <li role="presentation" class="dropdown-header">Select A
+                                Gadget
+                            </li>
+                            <li role="presentation" ng-repeat="gadget in gadgets">
+                                <a ng-click="selectType(gadget, Rules, DataFilters )">{{gadget.gadgetTitle}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div id="gadgetTitle">
+                    <h2>{{gadget.gadgetTitle}}</h2>
+                </div>
+                <div id="gadgetDescription">
+                    <h5>{{gadget.gadgetDescription}}</h5>
+                </div>
+                <div id="loadingGadget" class="row-fluid ui-corner-all"
+                     style="padding: 0 .7em;" ng-hide="ShowGadget != 0">
+                    <div class="loadingContent">
+                        <p>
+                        <h3>Loading...</h3>
+                        <img alt="Loading  Content" src="images/ajax-loader.gif"/>
+                        </p>
+                    </div>
+                </div>
+                <!--<div id="gagdetdiv" class="gadgetCss" g-gadget ng-show="ShowGadget == 1"></div>-->
+                <div id="LinearRegressionDiv" class="gadgetCss" linregdirective
+                     ng-if="ShowGadget == 'linregdirective'"></div>
+                <div id="LogisticRegressionDiv" class="gadgetCss" logregdirective
+                     ng-if="ShowGadget == 'logregdirective'"></div>
+                <div id="MeansDiv" class="gadgetCss" meansdirective
+                     ng-if="ShowGadget == 'meansdirective'"></div>
+                <div id="CombinedFrequencyDiv" class="gadgetCss" combinedfrequencydirective
+                     ng-if="ShowGadget == 'combinedfrequencydirective'"></div>
+                <div id="FrequencyDiv" class="gadgetCss" frequencydirective
+                     ng-if="ShowGadget == 'frequencydirective'"></div>
+                <!--<div ui-view=""></div>-->
+                <button id="but1" class="btnlegend" ng-click="goLegends = !goLegends"
+                        width="200" ng-show="ShowLegendButton == 'true'">Legend
+                </button>
+                <div id="MapDiv" class="gadgetCss" mapdirective
+                     ng-if="ShowGadget == 'mapdirective'">
+                    <div id="LegendDiv" ng-show="goLegends"></div>
+                </div>
+            </div>
+        </tab>
+        <tab heading=Charts>
+            <div ng-controller="ChartCtrl">
+                <h4>{{windowWidth}}</h4>
+                <ul class="dropdwn1">
+                    <li role="presentation" class="dropdown">
+                        <button type="button"
+                                class="btn btn-default btn-sm dropdown-toggle">
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                        </button>
+                        <!-- <a class="dropdown-toggle">{{chart.typeName}}</a>-->
+                        <ul class="dropdown-menu">
+                            <li role="presentation" class="dropdown-header">Select Ax
+                                Chart
+                            </li>
+                            <li role="presentation" ng-repeat="chart in charts">
+                                <a ng-click="selectChartType(chart, Rules, DataFilters)">{{chart.gadgetName}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="chartTitle">
+                    <h2>{{chart.gadgetTitle}}</h2>
+                </div>
+                <div id="chartDescription">
+                    <h5>{{chart.gadgetDescription}}</h5>
+                </div>
+                <div id="chartNumRecords">
+                    <h4>{{chart.RecordCountLabel}}</h4>
+                </div>
+                <div id="loadingChart" class="row-fluid ui-corner-all"
+                     style="padding: 0 .7em;" ng-hide="ShowChart == 1">
+                    <div class="loadingContent">
+                        <p>
+                        <h3>Loading...</h3>
+                        <img alt="Loading  Content" src="images/ajax-loader.gif"/>
+                        </p>
+                    </div>
+                </div>
+                <div id="chartdiv" style="height:80%;" g-chart
+                     ng-if="ShowChart == 1"></div>
+            </div>
+        </tab>
+        <!--<div id="refresh" class="btn-group">
+            <button type="button" class="btn btn-success" onClick="history.go(0)"><span class="glyphicon glyphicon-refresh"></span></button>
+
+        </div>-->
+    </tabset>
+</div>
+<!--EndDIV-->

@@ -1,0 +1,192 @@
+﻿body {
+    padding-top: 50px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.starter-template {
+    padding: 15px 15px 15px 5px;
+    /*text-align: center;*/
+}
+
+.contain1 {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff !important;
+}
+
+navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse {
+    box-shadow: 0 -1px 0 rgba(77, 117, 164, 0.8) inset;
+    background-image: linear-gradient(to bottom, #4e75a5, #4d75a4);
+    background-color: #4d75a4;
+    border-color: #4d75a4;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.epiicon {
+    width: 50px;
+    padding-right: 10px;
+    vertical-align: text-bottom;
+    margin-top: -8px;
+}
+
+.dropdwn1 {
+    padding: 15px 5px 10px 5px;
+}
+
+ul.dropdwn1 li {
+    list-style: none;
+}
+
+ul.dropdwn1 li button {
+    background: #5C53AC !important;
+    border: 1px solid #1F3B53 !important;
+    color: #fff !important;
+}
+
+ul.dropdwn1 li button.navbar-toggle {
+
+    float: none;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    padding: 10px;
+}
+
+a.ng-binding {
+    font-weight: bold;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#gadgetTitle, #chartTitle {
+    margin: -52px 0 0 59px;
+}
+
+#gadgetDescription, #chartDescription {
+    margin-top: 25px;
+}
+
+#chartNumRecords {
+    padding-top: 10px;
+}
+
+#gadgetTitle h4, #chartTitle h4 {
+    font-weight: 600;
+}
+
+.gadgetCss table {
+    border-spacing: 1px !important;
+    border-collapse: collapse;
+    border: 1px solid #4d75a4 !important;
+}
+
+/* Zebra striping */
+.gadgetCss tr:nth-of-type(even) {
+    background: #e5e5e5;
+}
+
+.gadgetCss th {
+    background: #6287b5;
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.gadgetCss td, .gadgetCss th {
+    padding: 6px 8px 6px 6px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #4d75a4 !important;
+}
+
+.lowmargin {
+    margin-bottom: 10px;
+}
+
+table.meansstrat td:nth-child(1) {
+    background: #6287b5;
+    color: White;
+}
+
+#refresh {
+    float: right;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.showcheck {
+    background: #d9edf7;
+}
+
+.hidecheck {
+    background: inherit;
+}
+
+.stratheader {
+    font-weight: bold;
+}
+
+.dashinfo {
+    font-size: 8pt;
+    background: #00b050;
+    color: White;
+    padding: 2px 4px;
+}
+
+#loadingChart, #loadingGadget {
+
+    background: #f9edbe;
+    opacity: 0.9;
+    text-align: center;
+    border: 2px solid #f0c36d;
+
+}
+
+#MapDiv, .map {
+    width: 90%; /*Added to Override reload to a smaller map if more than one maps are present*/
+    height: 80%;
+    /*min-height: 400px;
+    min-width: 300px;*/
+}
+
+.map circle {
+    stroke-opacity: 0 !important;
+}
+
+#LegendDiv {
+    /*position: absolute;
+    bottom: 0;
+    z-index: 2;*/
+    background: #FFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #C4C4C4;
+}
+
+.btnLegend {
+    margin-bottom: 10px;
+    background: #74B700;
+    border: 1px solid #456f00;
+    /* color: #FFF; */
+    font-weight: bold;
+    padding: 3px 15px;
+}

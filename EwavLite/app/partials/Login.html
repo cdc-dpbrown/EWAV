@@ -1,0 +1,22 @@
+﻿<h3>
+    Log In</h3>
+<h5>
+    Please log in using your email and password.</h5>
+<div id="loginform" style="margin-bottom: 2px; font-size: 12pt; font-weight: bold;
+                    display: block;">
+    <form>
+        <label for="Email" style="display: block;">
+            Email:</label>
+        <input type="text" id="username" ng-model="username"/>
+        <label for="Passcode" style="display: block; margin-top: 10px;">
+            Password:</label>
+        <input type="password" id="password" ng-model="password"/><br/>
+        <br/>
+        <button type="submit" value="Log in" class="default"
+                ng-click="submit(username, password)">
+            Log In
+        </button>
+        <br/>
+        <br/>
+    </form>
+</div>

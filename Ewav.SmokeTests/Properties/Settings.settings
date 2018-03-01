@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Ewav.SmokeTests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PostgresMetaDataConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">aa</Value>
+    </Setting>
+    <Setting Name="PostgresMetaDataViewName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dd</Value>
+    </Setting>
+    <Setting Name="PostgresMetaDatabaseType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ff</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

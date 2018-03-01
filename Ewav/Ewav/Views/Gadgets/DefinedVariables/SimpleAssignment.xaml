@@ -1,0 +1,51 @@
+﻿<controls:ChildWindow x:Class="Ewav.SimpleAssignment"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+		   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		   mc:Ignorable="d" 
+           Title="Variable with Simple Assignment" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource ChildWindowStyle1}">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" HorizontalAlignment="Center" Margin="88,12,0,0" Grid.Row="1" Style="{StaticResource btnprimary}" Height="28"/>
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75"  HorizontalAlignment="Center" Margin="0,12,88,0" Grid.Row="1" Style="{StaticResource btnprimary}" Height="28"/>
+        <sdk:Label x:Name="lblField" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Assign Field:"/>
+        <TextBox x:Name="txtDestinationField" HorizontalAlignment="Left" Margin="8,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <sdk:Label x:Name="lblDestinationField" HorizontalAlignment="Left" Margin="8,61,0,0" VerticalAlignment="Top" Content="Assignment Type:"/>
+        <ComboBox x:Name="cbxAssignmentType" HorizontalAlignment="Left" Margin="8,79,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="cbxAssignmentType_SelectionChanged" SelectedIndex="0" >
+            <ComboBoxItem>Difference in years</ComboBoxItem>
+            <ComboBoxItem>Difference in months</ComboBoxItem>
+            <ComboBoxItem>Difference in days</ComboBoxItem>
+            <ComboBoxItem>Difference in hours</ComboBoxItem>
+            <ComboBoxItem>Difference in minutes</ComboBoxItem>            <ComboBoxItem>Round a number</ComboBoxItem>
+            <ComboBoxItem>Convert text data to numeric data</ComboBoxItem>
+            <ComboBoxItem>Find the length of text data</ComboBoxItem>
+            <ComboBoxItem>Find the location of text data</ComboBoxItem>
+            <ComboBoxItem>Substring</ComboBoxItem>
+            <ComboBoxItem>Convert text characters to uppercase</ComboBoxItem>
+            <ComboBoxItem>Convert text characters to lowercase</ComboBoxItem>
+            <ComboBoxItem>Add days to a date field</ComboBoxItem>
+            <ComboBoxItem>Determine if a drop-down list field contains a value not present in its code table</ComboBoxItem>
+            
+            <ComboBoxItem>Convert text data to date data</ComboBoxItem>
+        </ComboBox>
+        <!--SelectionChanged="cbxSourceField_SelectedIndexChanged"/>-->
+        <sdk:Label x:Name="lblParam1" HorizontalAlignment="Left" Margin="8,115,0,0" VerticalAlignment="Top" Content="Parameter #1:" d:LayoutOverrides="VerticalAlignment"/>
+        <ComboBox x:Name="cbxParam1" HorizontalAlignment="Left" Margin="8,133,0,0" VerticalAlignment="Top" Width="224"  d:LayoutOverrides="VerticalAlignment" />     <!--SelectionChanged="cbxFieldType_SelectionChanged"-->
+        <!--<sdk:AutoCompleteBox x:Name="cbxParam1" HorizontalAlignment="Left" Height="24" Margin="8,133,0,0" VerticalAlignment="Top" Width="224"  d:LayoutOverrides="VerticalAlignment" />-->
+        <sdk:Label x:Name="lblParam2" HorizontalAlignment="Left" Margin="8,175,0,0" VerticalAlignment="Top" Content="Parameter #2:"/>
+        <ComboBox x:Name="cbxParam2" HorizontalAlignment="Left" Margin="8,193,0,0" VerticalAlignment="Top" Width="224"/> <!--SelectionChanged="cbxFieldType_SelectionChanged"/>-->
+        <TextBox x:Name="txtParam2" HorizontalAlignment="Left" Height="24" Margin="8,193,0,0" VerticalAlignment="Top" Width="224" Visibility="Collapsed"/>
+        <sdk:Label x:Name="lblParam3" HorizontalAlignment="Left" Margin="8,234,0,0" VerticalAlignment="Top" Content="Parameter #3:"/>
+        <ComboBox x:Name="cbxParam3" HorizontalAlignment="Left" Margin="8,252,0,0" VerticalAlignment="Top" Width="224" />  <!--SelectionChanged="cbxFieldType_SelectionChanged"/>-->
+        <TextBox x:Name="txtParam3" HorizontalAlignment="Left" Height="24" Margin="8,252,0,0" VerticalAlignment="Top" Width="224" Visibility="Collapsed"  />
+        <sdk:Label x:Name="lblDescription" HorizontalAlignment="Left" Margin="8,294,0,0" Content="Description of Assignment Type:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="140" Margin="8,310,0,0" TextWrapping="Wrap" Width="400" VerticalAlignment="Top" IsReadOnly="True"/>
+    </Grid>
+</controls:ChildWindow>

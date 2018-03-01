@@ -1,0 +1,35 @@
+﻿<sdk:ChildWindow 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	mc:Ignorable="d"
+	xmlns:local="clr-namespace:Ewav"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    x:Class="Ewav.SetDatasource"
+    Title="Set Data Source" VerticalAlignment="Center"
+	Style="{StaticResource ChildWindowStyle1}" HorizontalAlignment="Center" Background="#FFD5E2F7">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="GridBox">
+            <StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,7" Width="262" Visibility="Collapsed">
+                <Image HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbSaveError" TextWrapping="Wrap" Text="Please select a data source." FontFamily="Segoe UI" Foreground="#FF601919" Margin="6,0,0,0" VerticalAlignment="Top" Width="236.4"/>
+            </StackPanel>
+            <StackPanel x:Name="spOpen">
+                <TextBlock TextWrapping="Wrap" Text="Select a data source to add statistical gadgets and charts." HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="13.333" FontWeight="Normal" Width="262" Margin="0,5"/>
+                <TextBlock TextWrapping="Wrap" Text="Select Data Source" FontFamily="Segoe UI" FontSize="13.333" FontWeight="Bold" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <ComboBox x:Name="cboDatasoures" Width="262" Margin="0,5" Height="27" SelectionChanged="cboDatasoures_SelectionChanged"/>
+                <Button x:Name="btnSetDB" Content="Set Data Source" Height="29" VerticalAlignment="Top" Width="172" HorizontalAlignment="Left" Margin="0,10,0,0" Style="{StaticResource btnprimary}" Click="OKButton_Click" IsEnabled="False"/>
+                <Button x:Name="btnCancel" Content="Cancel" Height="29" VerticalAlignment="Top" Width="80" Margin="0,-29,0,4.1" HorizontalAlignment="Right"  Style="{StaticResource btnprimary}" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid x:Name="waitCursor" Background="#35C4C4C4" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource busy}" />
+        </Grid> 
+    </Grid>
+</sdk:ChildWindow>

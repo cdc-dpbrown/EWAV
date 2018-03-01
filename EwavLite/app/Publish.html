@@ -1,0 +1,114 @@
+﻿<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <title>EWAV Lite - Publish Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+    <style type="text/css">
+        .bb td, .bb th {
+            border-bottom: 1px solid black !important;
+        }
+    </style>
+</head>
+<body ng-cloak>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container contain1">
+        <div class="navbar-header">
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>-->
+            <a class="navbar-brand" href="#">
+                <img src="images/icon.png" alt="Epi Info" class="epiicon"/>EWAV Lite</a>
+        </div>
+    </div>
+</div>
+<div class="container contain1">
+    <div class="starter-template" ng-controller="PublishCtrl">
+        <div id="login" ng-hide="IsUserLoggedIn == 1" ng-include="'partials/Login.html'">
+            <!--  <h3>
+                  Log In</h3>
+              <h5>
+                  Please log in using your email and password in order to publish a dashboard.</h5>
+              <div id="loginform" style="margin-bottom: 2px; font-size: 12pt; font-weight: bold;
+                  display: block;">
+                  <form>
+                      <label for="Email" style="display: block;">
+                          Email:</label>
+                      <input type="text" id="username" ng-model="username" />
+                      <label for="Passcode" style="display: block; margin-top: 10px;">
+                          Password:</label>
+                      <input type="password" id="password" ng-model="password" /><br />
+                      <br />
+
+                      <button type="submit" value="Log in" class="default" ng-click="submit(username, password)">
+                              Log In</button>
+                  </form>
+                  <br />
+                  <br />
+              </div>-->
+        </div>
+        <div id="publish" ng-show="IsUserLoggedIn == 1">
+            <h3>
+                Publish Dashboard</h3>
+            <h5>
+                Please select a dashboard that you would like to publish.</h5>
+            <div id="Div1"
+                 style="margin-bottom: 2px; font-size: 12pt; font-weight: bold; display: block;">
+                <label for="Email" style="display: block;">
+                    Select a Dashboard to Publish:</label>
+                <!--<select ng-change="selectType(this.value);" >
+                <option ng-repeat="canvas in Canvases" value="{{canvas.CanvasId}}" >{{canvas.CanvasName}}</option>
+                </select>-->
+                <!--<select ng-change="selectType(270)" ng-model="canvas" ng-options="item.CanvasId as item.Canvas.Name for item in Canvases">
+                <option>--</option>
+                </select>-->
+                <select ng-options="canvas.CanvasName for canvas in Canvases"
+                        ng-model="canvas" ng-change="selectType(canvas);" ;>
+                </select>
+                <br/><br/>
+                <label for="Email" style="display: block;">
+                    Published Link:</label>
+                <textarea readonly
+                          style="width:80%; height:50px; font-weight:normal; resize:none; background:#e5e5e5; border: 1px solid #b4b4b4;">{{url}}</textarea>
+            </div>
+        </div>
+    </div>
+    <!--End Starter-Template DIV-->
+</div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="lib/common/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/common/ui-bootstrap-tpls-0.10.0.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services/canvasservice.js"></script>
+<script src="js/services/frequencyservice.js"></script>
+<script src="js/services/combinedfrequencyservice.js"></script>
+<script src="js/services/chartservice.js"></script>  
+<script src="js/services/byPassLoginService.js"></script>
+<script src="js/services/loginservice.js"></script>
+<script src="js/filters/filters.js"></script>
+<script src="js/directives/chartsdirective.js"></script>
+<!--<script src="js/directives/gadgetsdirective.js"></script>-->
+<script src="js/controllers/chartcontroller.js"></script>
+<!--<script src="js/controllers/utilityController.js"></script>-->
+<script src="js/controllers/canvasController.js"></script>
+<script src="js/controllers/logincontroller.js"></script>
+<script src="js/controllers/publishcontroller.js"></script>
+<script src="js/services/publishservice.js"></script>
+<script src="js/controllers/gadgetcontroller.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<sdk:ChildWindow	
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	mc:Ignorable="d"
+	xmlns:local="clr-namespace:Ewav"
+	Title="Create New Password"	
+	x:Class="Ewav.ResetPwd" VerticalAlignment="Center"
+	Style="{StaticResource ChildWindowStyle1}" HorizontalAlignment="Center" Background="#FFD5E2F7" >
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<StackPanel Margin="11,0,14,0" HorizontalAlignment="Center" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
+			<StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Height="30" Margin="0,0,0,10" Visibility="Collapsed" HorizontalAlignment="Left">
+				<Image HorizontalAlignment="Left" Height="20" Source="../../Images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Center" Margin="0"/>
+				<TextBlock x:Name="tbErrorMsg" TextWrapping="Wrap" Text="The passwords do not match. Please try again." FontFamily="Segoe UI" Margin="6,0,0,0" FontSize="13.333" VerticalAlignment="Center" Foreground="#FF601919"/>
+			</StackPanel>
+            <StackPanel x:Name="spFormatError" VerticalAlignment="Top" Orientation="Vertical" Margin="0,0,0,24" HorizontalAlignment="Left">
+                <TextBlock Text="Password Policy:" FontFamily="Segoe UI" FontSize="14.667" FontWeight="Normal"/>
+            	<Image HorizontalAlignment="Left" Height="20" Source="../../Images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Center" Visibility="Collapsed"/>
+                <TextBlock x:Name="passwordLengthMsg" Text="Password must be at least 8 characters in length." FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="passwordTypeMsg"  TextWrapping="Wrap" Text="Password must be created using following character types:" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBlock Text="   • Uppercase" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Text="   • Lowercase" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Text="   • Numeric" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Text="   • Punctuation" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="puncMsg" Text="Password may contain these punctuations." FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="121,-17.73,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBlock Text="Password may not contain your User ID or any part of your full name." FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+            <Grid x:Name="grdPwd" Height="102" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,9" Width="379">
+				<TextBlock TextWrapping="Wrap" Text="New Password" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="13.333" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,6,0,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment"/>
+                <PasswordBox x:Name="tbNewPwd" FontFamily="Segoe UI" FontSize="13.333" VerticalAlignment="Top" Width="232" HorizontalAlignment="Right" Margin="0,0,26,0" d:LayoutOverrides="VerticalAlignment" />
+				<TextBlock TextWrapping="Wrap" Text="Confirm Password" VerticalAlignment="Top" FontWeight="Normal" LineHeight="13.333" HorizontalAlignment="Left" Margin="0,42,0,0" d:LayoutOverrides="HorizontalAlignment"/>
+                <PasswordBox x:Name="tbConfirmPwd" VerticalAlignment="Top"  FontSize="13.333" Width="232" HorizontalAlignment="Right" Margin="0,36,26,0" KeyDown="tbNewPwd_KeyDown" />
+				<Button x:Name="OKButton1" Content="Reset Password" Click="OKButton_Click" Width="172"  VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Margin="119,0,0,1" IsEnabled="False" Style="{StaticResource btnprimary}" Height="30" />
+			</Grid>
+			<StackPanel x:Name="spMsg_Success" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,18,0" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Source="../../images/SuccessD.png" Stretch="Fill" VerticalAlignment="Top" Height="26" Width="26"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Your password has been reset." FontFamily="Segoe UI" Foreground="#FF0C3929" Margin="34,-26,0,0" VerticalAlignment="Center"/>
+				<Button x:Name="btnBegin" Content="Begin" Margin="34,11,0,9" Width="172" HorizontalAlignment="Left" Click="btnBegin_Click" Style="{StaticResource btnprimary}" Height="30" />
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</sdk:ChildWindow>

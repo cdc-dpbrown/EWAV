@@ -1,0 +1,873 @@
+﻿<UserControl x:Class="Ewav.TwoxTwoTableControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:GadgetSelector="clr-namespace:Ewav.ContextMenu;assembly=Ewav.ContextMenu.Menu"
+	xmlns:Common="clr-namespace:CommonLibrary;assembly=CommonLibrary"  	    
+	mc:Ignorable="d"
+	d:DesignHeight="710" d:DesignWidth="700"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:converter="clr-namespace:Ewav.Converters" 
+    xmlns:local="clr-namespace:Ewav.ViewModels">
+
+    <UserControl.DataContext>
+        <local:TwoxTwoViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <converter:SideConverter x:Key="SideLengthConverter"/>
+        <Storyboard x:Name="Storyboard1" AutoReverse="True">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" x:Name="anim1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"  x:Name="anim2">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Name="Storyboard2" >
+            <ColorAnimationUsingKeyFrames x:Name="anim3" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="spYY">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFCBEEF5"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <SolidColorBrush x:Key="2x2BK" Color="#FFE2EAF4"/>
+        <SolidColorBrush x:Key="2x2Br" Color="#FF7BA0CD"/>
+
+        <DataTemplate x:Key="CrosstabDataTemplate">
+            <StackPanel  x:Name="pnlMainContent" Orientation="Horizontal" MinHeight="30" VerticalAlignment="Top" Visibility="Visible">
+                <StackPanel x:Name="pnlContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+                    <TextBlock x:Name="txtExposure" FontWeight="Bold" Text="{Binding TableName}" Margin="-106,0,-100,0" TextAlignment="Center" RenderTransformOrigin="0.607,0.396" Width="250" VerticalAlignment="Center" >
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform Rotation="-90" TranslateX="-28.414" TranslateY="-55.1"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Grid x:Name="grdTables" HorizontalAlignment="Center" Margin="0" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Grid.Row="1" Grid.Column="1" />
+                        <Rectangle Grid.Row="1" Grid.Column="2" />
+                        <Rectangle Grid.Row="1" Grid.Column="3" />
+                        <Rectangle Grid.Row="2" Grid.Column="0" />
+                        <Rectangle Grid.Row="2" Grid.Column="1" />
+                        <Rectangle Grid.Row="2" Grid.Column="2" />
+                        <Rectangle Grid.Row="2" Grid.Column="3" />
+                        <Rectangle Grid.Row="3" Grid.Column="0" />
+                        <Rectangle Grid.Row="3" Grid.Column="1" />
+                        <Rectangle Grid.Row="3" Grid.Column="2" />
+                        <Rectangle Grid.Row="3" Grid.Column="3" />
+                        <Rectangle Grid.Row="4" Grid.Column="0" />
+                        <Rectangle Grid.Row="4" Grid.Column="1" />
+                        <Rectangle Grid.Row="4" Grid.Column="2" />
+                        <Rectangle Grid.Row="4" Grid.Column="3" />
+
+                        <TextBlock FontWeight="Bold" x:Name="txtOutcome" HorizontalAlignment="Center" Text="{Binding Exposure}" Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="0"/>
+
+                        <TextBlock x:Name="outcomeYes" Margin="2, 0, 2, 0" Text="{Binding ColumnNameList[1].VarName}" Grid.Row="1" Grid.Column="1" Style="{StaticResource HeaderFont}"/>
+                        <TextBlock x:Name="outcomeNo" Margin="2, 0, 2, 0" Text="{Binding ColumnNameList[2].VarName}" Grid.Row="1" Grid.Column="2" Style="{StaticResource HeaderFont}"/>
+                        <TextBlock x:Name="outcomeTotal" Margin="2, 0, 2, 0" Text="Total" Grid.Row="1" Grid.Column="3" Style="{StaticResource HeaderFont}"/>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">
+                            <TextBlock x:Name="exposureYes" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="{Binding RecordList[0].Fields[0].VarName}" Style="{StaticResource HeaderFont}"/>
+                            <TextBlock x:Name="tblockYesRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Row %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                            <TextBlock x:Name="tblockYesColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Col %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0">
+                            <TextBlock x:Name="exposureNo" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="{Binding RecordList[1].Fields[0].VarName}" Style="{StaticResource HeaderFont}"/>
+                            <TextBlock x:Name="tblockNoRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Row %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                            <TextBlock x:Name="tblockNoColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Col %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0">
+                            <TextBlock Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Total" Style="{StaticResource HeaderFont}"/>
+                            <TextBlock x:Name="tblockTotalRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Row %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                            <TextBlock x:Name="tblockTotalColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Col %" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                        </StackPanel>
+                        <Border x:Name="BspYY" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="1" Height="74" Margin="2,0,-2,0" Grid.Row="2" VerticalAlignment="Center" BorderThickness="0,0,0,1" CornerRadius="15,0,0,0" Background="{StaticResource 2x2BK}" >
+
+                            <StackPanel x:Name="spYY" Background="#00E2EAF4"  Cursor="Hand" Opacity="0.96" Margin="0,0,0,-6">
+                                <TextBlock x:Name="txtYesYesVal" Margin="2, 2, 2, 2" HorizontalAlignment="Left" Text="{Binding GridCellData.YyVal}" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right" />
+                                <TextBlock x:Name="txtYesYesRow" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="{Binding GridCellData.YyRowPct, StringFormat=P}"/>
+                                <TextBlock x:Name="txtYesYesCol" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="{Binding GridCellData.YyColPct, StringFormat=P}"/>
+                            </StackPanel>
+
+                        </Border>
+                        <Border x:Name="BspYN" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="1" Height="74" Margin="2,0,-2,0" Grid.Row="3" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" BorderThickness="0,1,0,0" CornerRadius="0,0,0,15" >
+                            <StackPanel x:Name="spYN" Background="#01E2EAF4"  Cursor="Hand">
+                                <TextBlock x:Name="txtNoYesVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding GridCellData.NyVal}" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                <TextBlock x:Name="txtNoYesRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NyRowPct, StringFormat=P}"/>
+                                <TextBlock x:Name="txtNoYesCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NyColPct, StringFormat=P}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1">
+                            <TextBlock x:Name="txtTotalYesVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.TyVal}" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtTotalYesRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.TyRowPct, StringFormat=P}" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtTotalYesCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/> <!--100-->
+                        </StackPanel>
+
+                        <Border x:Name="BspNY" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="2" Height="74" Margin="2,0,-1,0" Grid.Row="2" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" CornerRadius="0,15,0,0" BorderThickness="0,0,0,1" >
+                            <StackPanel x:Name="spNY" Background="#00E2EAF4"  Cursor="Hand">
+                                <TextBlock x:Name="txtYesNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding GridCellData.YnVal}" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                <TextBlock x:Name="txtYesNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.YnRowPct, StringFormat=P}"/>
+                                <TextBlock x:Name="txtYesNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.YnColPct, StringFormat=P}"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border x:Name="BspNN" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="2" Height="74" Margin="2,0,-1,0" Grid.Row="3" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" BorderThickness="0,1,0,0" CornerRadius="0,0,15,0" >
+                            <StackPanel x:Name="spNN" Background="#00E2EAF4"  Cursor="Hand">
+                                <TextBlock x:Name="txtNoNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding GridCellData.NnVal}" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                <TextBlock x:Name="txtNoNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NnRowPct, StringFormat=P}"/>
+                                <TextBlock x:Name="txtNoNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NnColPct, StringFormat=P}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="2">
+                            <TextBlock x:Name="txtTotalNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.TnVal}" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtTotalNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.TnRowPct, StringFormat=P}" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtTotalNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/> <!--100-->
+                        </StackPanel>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3">
+                            <TextBlock x:Name="txtYesTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.YtVal}" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtYesTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/> <!--100-->
+                            <TextBlock x:Name="txtYesTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.YtColPct, StringFormat=P}" Foreground="#FF6E6E6E"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3">
+                            <TextBlock x:Name="txtNoTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NtVal}" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtNoTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/> <!--100-->
+                            <TextBlock x:Name="txtNoTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.NtColPct, StringFormat=P}" Foreground="#FF6E6E6E"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="3">
+                            <TextBlock x:Name="txtTotalTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding GridCellData.TtVal}" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E" />
+                            <TextBlock x:Name="txtTotalTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/>
+                            <TextBlock x:Name="txtTotalTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="100%" Foreground="#FF6E6E6E"/>
+                        </StackPanel>
+                        <Path Grid.ColumnSpan="4" Data="M0,119 L311,118" Height="1" Margin="0,0,-33,1" Grid.Row="2" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Bottom"/>
+                        <Rectangle x:Name="Hline" Grid.ColumnSpan="3" Height="1" Margin="0,1,-57,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="4" Stroke="Black" StrokeThickness="0.5"/>
+                        <Rectangle x:Name="VLine" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="4" Width="1" Stroke="Black" StrokeThickness="0.5" Margin="5,0,0,0"/>
+                    </Grid>
+                    <Grid x:Name="grdGraph" Width="250" Height="250" HorizontalAlignment="Center" Margin="10" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <CompositeTransform ScaleX="0.9" ScaleY="0.8"/>
+                        </Grid.RenderTransform>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="125"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="125"/>
+                            <RowDefinition Height="125"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="rctRed" Grid.Row="0" Grid.Column="0"
+                                    Fill="#B3FF0000" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                					Height="{Binding GridCellData.YySideLength}" 
+                                    Width="{Binding GridCellData.YySideLength}"
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtYesYesVal}" 
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="1,1" >
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Rectangle x:Name="rctOrange" Grid.Row="0" Grid.Column="1"
+                					Fill="#B2FFA500"  HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                					Height="{Binding GridCellData.YnSideLength}" 
+                                    Width="{Binding GridCellData.YnSideLength}"
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtYesNoVal}"
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="0,1" >
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Rectangle x:Name="rctYellow" Grid.Row="1" Grid.Column="0"
+                                    Fill="#B3FFFF00" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                					Height="{Binding GridCellData.NySideLength}" 
+                                    Width="{Binding GridCellData.NySideLength}"
+                                    ToolTipService.ToolTip="{Binding Text, ElementName=txtNoYesVal}" 
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="1,0" >
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Rectangle x:Name="rctGreen" Grid.Row="1" Grid.Column="1"
+                                    Fill="#B3008000" 
+                 					Height="{Binding GridCellData.NnSideLength}" 
+                                    Width="{Binding GridCellData.NnSideLength}"
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtNoNoVal}" Cursor="Hand" 
+                					MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave"
+                					RenderTransformOrigin="0,0"
+                					HorizontalAlignment="Left" VerticalAlignment="Top"  >
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                </StackPanel>
+                <StackPanel x:Name="pnlAdvanced" HorizontalAlignment="Center" Margin="5,26,5,5" Visibility="Visible" Orientation="Horizontal">
+                    <StackPanel x:Name="pnlParameters" HorizontalAlignment="Left" Margin="0" Visibility="Visible" Orientation="Vertical">
+                        <StackPanel>
+                            <Border BorderThickness="0,0,0,0.5" Margin="5,0,5,-23" BorderBrush="#FF7395bf">
+                                <TextBlock FontWeight="Bold" Height="16" Width="255"><Run Text="Odds-based and Risk-based Parameters"/></TextBlock>
+                            </Border>
+                            <Grid x:Name="grdParameters" HorizontalAlignment="Left" Margin="5,33,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="67"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                                <Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                                <Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                                <Rectangle Grid.Row="0" Grid.Column="3" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                                <Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="3" Style="{StaticResource DataCell}"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="1" Text="Estimate" Style="{StaticResource HeaderFont}"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="2" Text="Lower" Style="{StaticResource HeaderFont}"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="3" Text="Upper" Style="{StaticResource HeaderFont}"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="1" Grid.Column="0" Text="Odds Ratio" HorizontalAlignment="Left" Style="{StaticResource HeaderFont1}"/>
+                                <TextBlock Margin="6, 0, 0, 0" Grid.Row="2" Grid.Column="0" Text="MLE Odds Ratio(Mid-P)" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left" Width="126"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="3" Grid.Column="0" Text="Fisher-Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioEstimate" Text="{Binding GridCellData.SingleTableResults.OddsRatioEstimate, StringFormat=N4}"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioLower" Text="{Binding GridCellData.SingleTableResults.OddsRatioLower, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioUpper" Text="{Binding GridCellData.SingleTableResults.OddsRatioUpper, StringFormat=N4}"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3" />
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPEstimate" Text="{Binding GridCellData.SingleTableResults.OddsRatioMLEEstimate, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPLower" Text="{Binding GridCellData.SingleTableResults.OddsRatioMLEMidPLower, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPUpper" Text="{Binding GridCellData.SingleTableResults.OddsRatioMLEMidPUpper, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="3" />
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherEstimate" Text=""  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherLower" Text="{Binding GridCellData.SingleTableResults.OddsRatioMLEFisherLower, StringFormat=N4}"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="2" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherUpper" Text="{Binding GridCellData.SingleTableResults.OddsRatioMLEFisherUpper, StringFormat=N4}"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="3" />
+
+                                <Rectangle Grid.Row="4" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="4" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="4" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="4" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="5" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="5" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="5" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="5" Grid.Column="3" Style="{StaticResource DataCell}"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="4" Grid.Column="0" Text="Risk Ratio" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="5" Grid.Column="0" Text="Risk Difference" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioEstimate" Text="{Binding GridCellData.SingleTableResults.RiskRatioEstimate, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioLower" Text="{Binding GridCellData.SingleTableResults.RiskRatioLower, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioUpper" Text="{Binding GridCellData.SingleTableResults.RiskRatioUpper, StringFormat=N4}"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="3" />
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceEstimate" Text="{Binding GridCellData.SingleTableResults.RiskDifferenceEstimate, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceLower" Text="{Binding GridCellData.SingleTableResults.RiskDifferenceLower, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceUpper" Text="{Binding GridCellData.SingleTableResults.RiskDifferenceUpper, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="3" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="pnlTests" HorizontalAlignment="Left" Margin="0" Visibility="Visible" Orientation="Vertical">
+                        <StackPanel>
+                            <Border Margin="5,0,5,-23" Height="23" BorderThickness="0,0,0,0.5" BorderBrush="#FF7395bf">
+                                <TextBlock FontWeight="Bold" Height="16" TextAlignment="Center"><Run Text="Statistical Tests"/></TextBlock>
+                            </Border>
+                            <Grid x:Name="grdTests" HorizontalAlignment="Left" Margin="5,33,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="73" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}"/>
+                                <Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}"/>
+                                <Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}"/>
+
+                                <Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <TextBlock Grid.Row="0" Margin="6, 0, 6, 0" HorizontalAlignment="Center"  Grid.Column="1" Style="{StaticResource HeaderFont}"><Run Text="X"/><Run Typography.Variants="Superscript" Text="2"/></TextBlock>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="2" Text="2 Tailed P" Style="{StaticResource HeaderFont}"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="1" Grid.Column="0" Text="Uncorrected" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="2" Grid.Column="0" Text="Mantel-Haenszel" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="6, 0, 6, 0" Grid.Row="3" Grid.Column="0" Text="Corrected" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqUncVal" Text="{Binding GridCellData.SingleTableResults.ChiSquareUncorrectedVal, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqUncP" Text="{Binding GridCellData.SingleTableResults.ChiSquareUncorrected2P, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" />
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqManVal" Text="{Binding GridCellData.SingleTableResults.ChiSquareMantelVal, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqManP" Text="{Binding GridCellData.SingleTableResults.ChiSquareMantel2P, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqCorVal" Text="{Binding GridCellData.SingleTableResults.ChiSquareYatesVal, StringFormat=N4}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqCorP"  Text="{Binding GridCellData.SingleTableResults.ChiSquareYates2P, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="2" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel>
+                            <Grid x:Name="grd1PTests" HorizontalAlignment="Center"  Margin="5,4,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}"/>
+                                <Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}"/>
+                                <Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}"/>
+
+                                <Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                                <Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                                <TextBlock Margin="6, 2, 6, 2" Grid.Row="0" Grid.Column="1" Text="1 Tailed P" Style="{StaticResource HeaderFont}"/>
+                                <TextBlock Margin="6, 2, 6, 2" Grid.Row="0" Grid.Column="2" Text="2 Tailed P" Style="{StaticResource HeaderFont}"/>
+
+                                <TextBlock Grid.Row="1" Margin="6, 0, 6, 0" Grid.Column="0" Text="Mid-P Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Row="2" Margin="6, 0, 6, 0" Grid.Column="0" Text="Fisher Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPExact" Text="{Binding GridCellData.SingleTableResults.MidP, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherExact" Text="{Binding GridCellData.SingleTableResults.FisherExactP, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                                <TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherExact2P" Text="{Binding GridCellData.SingleTableResults.FisherExact2P, StringFormat=N9}" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"  MouseRightButtonDown="LayoutRoot_MouseRightButtonDown"           
+		  MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown" Margin="0,0,-552,0">
+
+        <Grid x:Name="GadgetWindow"  MinWidth="450" MinHeight="30" >
+			<Grid.RowDefinitions>
+        		<RowDefinition Height="50"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="Auto"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+
+			<Rectangle x:Name="GWindow" Style="{StaticResource GWindow}" Grid.RowSpan="2" Stroke="{StaticResource WindowBrush}" StrokeThickness="4" Grid.ColumnSpan="2" />
+			<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,11,0,0" d:LayoutOverrides="VerticalAlignment, GridBox">
+                <TextBlock x:Name="GName" TextWrapping="Wrap" Text="2 x 2 Table" VerticalAlignment="Top" Margin="0,0,26,0" Height="Auto" HorizontalAlignment="Left" Foreground="#FF2B4360" FontSize="21.333"/>
+
+				<Rectangle x:Name="GHeader" VerticalAlignment="Top" Height="4" Margin="0,2,0,0" StrokeThickness="0" Fill="#FF00B050" />	
+			</StackPanel>
+			<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Margin="180,9,10,0" Grid.Column="1">
+				<Button x:Name="FilterButton" Content=""  Template="{StaticResource FilterButton}" Cursor="Hand" Click="FilterButton_Click" Width="24" Height="24" IsEnabled="False" >
+                	<Button.Effect>
+                		<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+                	</Button.Effect>
+                </Button>
+                <Button x:Name="HeaderButton" Content="" Template="{StaticResource HeaderButton}" Cursor="Hand" Click="HeaderButton_Click"  Width="24" Height="24" >
+                	<Button.Effect>
+                		<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+                	</Button.Effect>
+                </Button>
+				<Button x:Name="ResizeButton" Content="" Template="{StaticResource resizebtn}" Cursor="Hand" Click="ResizeButton_Click" Width="24" Height="24" >
+					<Button.Effect>
+						<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+					</Button.Effect>
+				</Button>
+                <Button x:Name="CloseButton" Content="" Template="{StaticResource CloseButton}" Cursor="Hand" Click="CloseGadget_Click" Width="24" Height="24" >
+					<Button.Effect>
+						<DropShadowEffect Color="#FFB0B0B0" ShadowDepth="1"/>
+					</Button.Effect>
+				</Button>
+			</StackPanel>
+			<Grid x:Name="GadgetContentGrid" Grid.Row="1" MinHeight="30" Margin="0,5,0,12" Grid.ColumnSpan="2">
+                <toolkit:Expander Margin="0,-45,131,10" VerticalAlignment="Top" x:Name="gadgetExpander"
+				ExpandDirection="Down" Style="{StaticResource ExpanderStyle2}" Canvas.ZIndex="999" HorizontalAlignment="Right" Width="188">
+
+					<toolkit:Expander.Header>
+						<TextBlock Text="Edit Properties" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333"  Foreground="White"/>
+					</toolkit:Expander.Header>
+					<Grid Background="#FF5C53AC" Margin="0,-2,1,10" Width="173" HorizontalAlignment="Center">
+						<StackPanel Margin="4,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="161">
+							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Exposure Field:" Margin="0,5,0,0" FontSize="13.333" FontWeight="Normal" Foreground="White"  />
+							<ComboBox x:Name="cbxExposureField" HorizontalAlignment="Left" SelectedIndex="0" Width="160" />
+							<TextBlock HorizontalAlignment="Left" TextAlignment="Center" Text="Outcome Field:" Margin="0,5,0,0" FontSize="13.333" FontWeight="Normal" Foreground="White"  />
+							<ComboBox x:Name="cbxOutcomeField" HorizontalAlignment="Left" SelectedIndex="0" Width="160" />
+
+							<toolkit:Expander x:Name="AdvancedOPtions"  Margin="0,10" ExpandDirection="Down" MouseLeftButtonDown="LayoutRoot_MouseRightButtonDown">
+								<toolkit:Expander.Header>
+									<TextBlock Text="Advanced Options" FontFamily="Segoe UI" Cursor="Hand" FontSize="13.333" Foreground="White	"/>
+								</toolkit:Expander.Header>
+								<StackPanel Orientation="Vertical" Margin="2" MinHeight="40">
+									<CheckBox x:Name="checkboxShowPercents" Margin="0" Content="Show percents" IsChecked="True" HorizontalAlignment="Left" FontSize="13.333" FontWeight="Normal" Foreground="White" />
+									<CheckBox x:Name="checkboxSmartTable" Margin="0" Content="Smart table" IsChecked="False" HorizontalAlignment="Left" FontSize="13.333" FontWeight="Normal" Foreground="White" />
+								</StackPanel>
+							</toolkit:Expander>
+						</StackPanel>
+					</Grid>
+				</toolkit:Expander>
+
+                <StackPanel x:Name="spContent" Margin="10,0,8,10" Orientation="Vertical" d:LayoutOverrides="Height" VerticalAlignment="Top">
+                    <TextBlock x:Name="txtGadgetDescription" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,6" MaxWidth="650" Padding="0,0,10,0" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin" />
+
+                    <StackPanel x:Name="pnlStatus" Height="58" MaxHeight="40" Width="Auto" Background="#FFf8d7e2" Visibility="Collapsed" VerticalAlignment="Top" Margin="5" >
+                        <StackPanel x:Name="pnlStatusTop" Height="2" Width="Auto" Background="#FFe4658e"/>
+                        <Image x:Name="ErrorIcon" Source="../../Images/error.png" Width="18" Height="18" HorizontalAlignment="Left" Margin="5,1,5,0" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtStatus" Text="Error: Exception occurred." TextWrapping="Wrap" Margin="30,-15,5,5" 
+                			HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <ListBox Name="listResults" ItemTemplate="{StaticResource CrosstabDataTemplate}" Background="#00000000" BorderBrush="Transparent">
+                        <!--<ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                 <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightSteelBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.Resources>-->
+                    </ListBox>
+
+                    <StackPanel x:Name="pnlMainContent" Orientation="Horizontal" MinHeight="30" VerticalAlignment="Top">
+                		<sdk:DataGrid x:Name="dgResults" Margin="0,40,0,0" Visibility="Visible"/>
+                		<StackPanel x:Name="pnlContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+                            <TextBlock x:Name="txtExposure" FontWeight="Bold"  Margin="-106,0,-100,0" Text="txtExposure" TextAlignment="Center" RenderTransformOrigin="0.607,0.396" Width="250" VerticalAlignment="Center" >
+                				<TextBlock.RenderTransform>
+                					<CompositeTransform Rotation="-90" TranslateX="-28.414" TranslateY="-55.1"/>
+                				</TextBlock.RenderTransform>
+                			</TextBlock>
+                			<Grid x:Name="grdTables" HorizontalAlignment="Center" Margin="0" Visibility="Visible">
+                				<Grid.RowDefinitions>
+                					<RowDefinition Height="20"/>
+                					<RowDefinition Height="30"/>
+                					<RowDefinition Height="70"/>
+                					<RowDefinition Height="70"/>
+                					<RowDefinition Height="70"/>
+                				</Grid.RowDefinitions>
+                				<Grid.ColumnDefinitions>
+                					<ColumnDefinition Width="Auto"/>
+                					<ColumnDefinition Width="90"/>
+                					<ColumnDefinition Width="90"/>
+                					<ColumnDefinition Width="Auto"/>
+                				</Grid.ColumnDefinitions>
+
+                				<Rectangle Grid.Row="1" Grid.Column="1" />
+                				<Rectangle Grid.Row="1" Grid.Column="2" />
+                				<Rectangle Grid.Row="1" Grid.Column="3" />
+                				<Rectangle Grid.Row="2" Grid.Column="0" />
+                				<Rectangle Grid.Row="2" Grid.Column="1" />
+                				<Rectangle Grid.Row="2" Grid.Column="2" />
+                				<Rectangle Grid.Row="2" Grid.Column="3" />
+                				<Rectangle Grid.Row="3" Grid.Column="0" />
+                				<Rectangle Grid.Row="3" Grid.Column="1" />
+                				<Rectangle Grid.Row="3" Grid.Column="2" />
+                				<Rectangle Grid.Row="3" Grid.Column="3" />
+                				<Rectangle Grid.Row="4" Grid.Column="0" />
+                				<Rectangle Grid.Row="4" Grid.Column="1" />
+                				<Rectangle Grid.Row="4" Grid.Column="2" />
+                				<Rectangle Grid.Row="4" Grid.Column="3" />
+
+                                <TextBlock FontWeight="Bold" x:Name="txtOutcome" HorizontalAlignment="Center" Text="txtOutcome" Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="0"/>
+
+                                <TextBlock x:Name="outcomeYes" Margin="2, 0, 2, 0" Text="outcomeYes" Grid.Row="1" Grid.Column="1" Style="{StaticResource HeaderFont}"/>
+                                <TextBlock x:Name="outcomeNo" Margin="2, 0, 2, 0" Text="outcomeNo" Grid.Row="1" Grid.Column="2" Style="{StaticResource HeaderFont}"/>
+                                <TextBlock x:Name="outcomeTotal" Margin="2, 0, 2, 0" Text="Total" Grid.Row="1" Grid.Column="3" Style="{StaticResource HeaderFont}"/>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">
+                                    <TextBlock x:Name="exposureYes" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="exposureYes" Style="{StaticResource HeaderFont}"/>
+                                    <TextBlock x:Name="tblockYesRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockYesRowPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="tblockYesColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockYesColPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                				</StackPanel>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0">
+                                    <TextBlock x:Name="exposureNo" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="exposureNo" Style="{StaticResource HeaderFont}"/>
+                                    <TextBlock x:Name="tblockNoRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockNoRowPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="tblockNoColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockNoColPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                				</StackPanel>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0">
+                					<TextBlock Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="Total" Style="{StaticResource HeaderFont}"/>
+                                    <TextBlock x:Name="tblockTotalRowPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockTotalRowPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="tblockTotalColPercent" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tblockTotalColPercent" Style="{StaticResource HeaderFont}" Visibility="Collapsed"/>
+                				</StackPanel>
+                				<Border x:Name="BspYY" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="1" Height="74" Margin="2,0,-2,0" Grid.Row="2" VerticalAlignment="Center" BorderThickness="0,0,0,1" CornerRadius="15,0,0,0" Background="{StaticResource 2x2BK}" >
+
+                					<StackPanel x:Name="spYY" Background="#00E2EAF4"  Cursor="Hand" Opacity="0.96" Margin="0,0,0,-6">
+                                        <TextBlock x:Name="txtYesYesVal" Margin="2, 2, 2, 2" HorizontalAlignment="Left" Text="tYYVal" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right" />
+                                        <TextBlock x:Name="txtYesYesRow" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tYYRow"/>
+                                        <TextBlock x:Name="txtYesYesCol" Margin="2, 2, 2, 2" HorizontalAlignment="Right" Text="tYYCol"/>
+                					</StackPanel>
+
+                				</Border>
+                				<Border x:Name="BspYN" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="1" Height="74" Margin="2,0,-2,0" Grid.Row="3" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" BorderThickness="0,1,0,0" CornerRadius="0,0,0,15" >
+
+                					<StackPanel x:Name="spYN" Background="#01E2EAF4"  Cursor="Hand">
+                                        <TextBlock x:Name="txtNoYesVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="tNYVal" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                        <TextBlock x:Name="txtNoYesRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tNYRow"/>
+                                        <TextBlock x:Name="txtNoYesCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tNYCol"/>
+                					</StackPanel>
+
+                				</Border>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1">
+                                    <TextBlock x:Name="txtTotalYesVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tTYVal" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtTotalYesRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tTYRow" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtTotalYesCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tTYCol" Foreground="#FF6E6E6E"/>
+                				</StackPanel>
+                				<Border x:Name="BspNY" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="2" Height="74" Margin="2,0,-1,0" Grid.Row="2" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" CornerRadius="0,15,0,0" BorderThickness="0,0,0,1" >
+
+                					<StackPanel x:Name="spNY" Background="#00E2EAF4"  Cursor="Hand">
+                                        <TextBlock x:Name="txtYesNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="tYNVal" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                        <TextBlock x:Name="txtYesNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tYNRow"/>
+                                        <TextBlock x:Name="txtYesNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tYNCol"/>
+                					</StackPanel>
+
+                				</Border>
+                				<Border x:Name="BspNN" MouseEnter="sp_MouseEnter" MouseLeave="sp_MouseLeave" Grid.Column="2" Height="74" Margin="2,0,-1,0" Grid.Row="3" VerticalAlignment="Center" Background="{StaticResource 2x2BK}" BorderThickness="0,1,0,0" CornerRadius="0,0,15,0" >
+
+                					<StackPanel x:Name="spNN" Background="#00E2EAF4"  Cursor="Hand">
+                                        <TextBlock x:Name="txtNoNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="tNNVal" FontSize="18.667" FontWeight="Bold" MinWidth="50" TextAlignment="Right"/>
+                                        <TextBlock x:Name="txtNoNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tNNRow"/>
+                                        <TextBlock x:Name="txtNoNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="tNNCol"/>
+                					</StackPanel>
+
+                				</Border>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="2">
+                                    <TextBlock x:Name="txtTotalNoVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalNoVal" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtTotalNoRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalNoRow" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtTotalNoCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalNoCol" Foreground="#FF6E6E6E"/>
+                				</StackPanel>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3">
+                                    <TextBlock x:Name="txtYesTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtYesTotalVal" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtYesTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtYesTotalRow" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtYesTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtYesTotalCol" Foreground="#FF6E6E6E"/>
+                				</StackPanel>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3">
+                                    <TextBlock x:Name="txtNoTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtNoTotalVal" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtNoTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtNoTotalRow" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtNoTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtNoTotalCol" Foreground="#FF6E6E6E"/>
+                				</StackPanel>
+
+                				<StackPanel Margin="2, 0, 2, 0" VerticalAlignment="Center" Grid.Row="4" Grid.Column="3">
+                                    <TextBlock x:Name="txtTotalTotalVal" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalTotalVal" FontSize="16" FontWeight="Bold" MinWidth="50" TextAlignment="Right" Foreground="#FF6E6E6E" />
+                                    <TextBlock x:Name="txtTotalTotalRow" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalTotalRow" Foreground="#FF6E6E6E"/>
+                                    <TextBlock x:Name="txtTotalTotalCol" Margin="2, 2, 2, 2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="txtTotalTotalCol" Foreground="#FF6E6E6E"/>
+                				</StackPanel>
+                				<Path Grid.ColumnSpan="4" Data="M0,119 L311,118" Height="1" Margin="0,0,-33,1" Grid.Row="2" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Bottom"/>
+                				<Rectangle x:Name="Hline" Grid.ColumnSpan="3" Height="1" Margin="0,1,-57,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="4" Stroke="Black" StrokeThickness="0.5"/>
+                				<Rectangle x:Name="VLine" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="4" Width="1" Stroke="Black" StrokeThickness="0.5" Margin="5,0,0,0"/>
+                			</Grid>
+                			<Grid x:Name="grdGraph" Width="250" Height="250" HorizontalAlignment="Center" Margin="10" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+                				<Grid.RenderTransform>
+                					<CompositeTransform ScaleX="0.9" ScaleY="0.8"/>
+                				</Grid.RenderTransform>
+                				<Grid.ColumnDefinitions>
+                					<ColumnDefinition Width="125"/>
+                					<ColumnDefinition Width="125"/>
+                				</Grid.ColumnDefinitions>
+                				<Grid.RowDefinitions>
+                					<RowDefinition Height="125"/>
+                					<RowDefinition Height="125"/>
+                				</Grid.RowDefinitions>
+
+                				<Rectangle x:Name="rctRed" Grid.Row="0" Grid.Column="0"
+                                    Fill="#B3FF0000" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                					Height="124" Width="124" 
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtYesYesVal}" 
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="1,1" >
+                					<Rectangle.RenderTransform>
+                						<CompositeTransform/>
+                					</Rectangle.RenderTransform>
+                				</Rectangle>
+                				<Rectangle x:Name="rctOrange" Grid.Row="0" Grid.Column="1" 
+                					Fill="#B2FFA500" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                					Height="93" Width="93" 
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtYesNoVal}" 
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="0,1" >
+                					<Rectangle.RenderTransform>
+                						<CompositeTransform/>
+                					</Rectangle.RenderTransform>
+                				</Rectangle>
+                				<Rectangle x:Name="rctYellow" Grid.Row="1" Grid.Column="0" 
+                					Fill="#B3FFFF00" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                    Width="15" Height="15" 
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtNoYesVal}" 
+                					Cursor="Hand" MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="1,0" >
+                					<Rectangle.RenderTransform>
+                						<CompositeTransform/>
+                					</Rectangle.RenderTransform>
+                				</Rectangle>
+                				<Rectangle x:Name="rctGreen" Grid.Row="1" Grid.Column="1"
+                                    Fill="#B3008000" HorizontalAlignment="Left" VerticalAlignment="Top"
+                					Width="125" Height="125" 
+                					ToolTipService.ToolTip="{Binding Text, ElementName=txtNoNoVal}" Cursor="Hand" 
+                					MouseEnter="rectangle_MouseEnter" MouseLeave="rectangle_MouseLeave" RenderTransformOrigin="0,0" >
+                					<Rectangle.RenderTransform>
+                						<CompositeTransform/>
+                					</Rectangle.RenderTransform>
+                				</Rectangle>
+
+                			</Grid>
+                		</StackPanel>
+                		<StackPanel x:Name="pnlAdvanced" HorizontalAlignment="Center" Margin="5,26,5,5" Visibility="Visible" Orientation="Horizontal">
+                			<StackPanel x:Name="pnlParameters" HorizontalAlignment="Left" Margin="0" Visibility="Visible" Orientation="Vertical">
+                				<StackPanel>
+                					<Border BorderThickness="0,0,0,0.5" Margin="5,0,5,-23" BorderBrush="#FF7395bf">
+                						<TextBlock FontWeight="Bold" Height="16" Width="255"><Run Text="Odds-based and Risk-based Parameters"/></TextBlock>
+                					</Border>
+                					<Grid x:Name="grdParameters" HorizontalAlignment="Left" Margin="5,33,5,5">
+                						
+                                        <Grid.RowDefinitions>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                						</Grid.RowDefinitions>
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="140"/>
+                							<ColumnDefinition Width="Auto" MinWidth="67"/>
+                							<ColumnDefinition Width="Auto"/>
+                							<ColumnDefinition Width="Auto"/>
+                						</Grid.ColumnDefinitions>
+
+                                        <Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                						<Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                						<Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                						<Rectangle Grid.Row="0" Grid.Column="3" Style="{StaticResource HeaderCell}" Fill="#FFD4DEEA"/>
+                						<Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="3" Style="{StaticResource DataCell}"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="1" Text="Estimate" Style="{StaticResource HeaderFont}"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="2" Text="Lower" Style="{StaticResource HeaderFont}"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="3" Text="Upper" Style="{StaticResource HeaderFont}"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="1" Grid.Column="0" Text="Odds Ratio" HorizontalAlignment="Left" Style="{StaticResource HeaderFont1}"/>
+                						<TextBlock Margin="6,0,0,0" Grid.Row="2" Grid.Column="0" Text="MLE Odds Ratio(Mid-P)" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left" Width="126"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="3" Grid.Column="0" Text="Fisher-Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioEstimate" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioLower" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtOddsRatioUpper" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3" />
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPEstimate" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPLower" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPUpper" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="3" />
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherEstimate" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherLower" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="2" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherUpper" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="3" />
+
+                						<Rectangle Grid.Row="4" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="4" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="4" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="4" Grid.Column="3" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="5" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="5" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="5" Grid.Column="2" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="5" Grid.Column="3" Style="{StaticResource DataCell}"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="4" Grid.Column="0" Text="Risk Ratio" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="5" Grid.Column="0" Text="Risk Difference" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioEstimate" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioLower" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskRatioUpper" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="3" />
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceEstimate" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceLower" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtRiskDifferenceUpper" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="3" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                			<StackPanel x:Name="pnlTests" HorizontalAlignment="Left" Margin="0" Visibility="Visible" Orientation="Vertical">
+                				<StackPanel>
+                					<Border Margin="5,0,5,-23" Height="23" BorderThickness="0,0,0,0.5" BorderBrush="#FF7395bf">
+                						<TextBlock FontWeight="Bold" Height="16" TextAlignment="Center"><Run Text="Statistical Tests"/></TextBlock>
+                					</Border>
+                					<Grid x:Name="grdTests" HorizontalAlignment="Left" Margin="5,33,5,5">
+                						<Grid.RowDefinitions>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                						</Grid.RowDefinitions>
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="120"/>
+                							<ColumnDefinition Width="Auto" MinWidth="73" />
+                							<ColumnDefinition Width="Auto" />
+                						</Grid.ColumnDefinitions>
+
+                						<Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}"/>
+                						<Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}"/>
+                						<Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}"/>
+
+                						<Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<TextBlock Grid.Row="0" Margin="6, 0, 6, 0" HorizontalAlignment="Center"  Grid.Column="1" Style="{StaticResource HeaderFont}"><Run Text="X"/><Run Typography.Variants="Superscript" Text="2"/></TextBlock>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="0" Grid.Column="2" Text="2 Tailed P" Style="{StaticResource HeaderFont}"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="1" Grid.Column="0" Text="Uncorrected" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="2" Grid.Column="0" Text="Mantel-Haenszel" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                						<TextBlock Margin="6, 0, 6, 0" Grid.Row="3" Grid.Column="0" Text="Corrected" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqUncVal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqUncP" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" />
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqManVal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqManP" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqCorVal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtChiSqCorP" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="2" />
+                					</Grid>
+                				</StackPanel>
+                				<StackPanel>
+                					<Grid x:Name="grd1PTests" HorizontalAlignment="Center"  Margin="5,4,5,5">
+                						<Grid.RowDefinitions>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+                							<RowDefinition Height="25"/>
+										
+                						</Grid.RowDefinitions>
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="120"/>
+                							<ColumnDefinition Width="Auto"/>
+                							<ColumnDefinition Width="Auto"/>
+                						</Grid.ColumnDefinitions>
+
+                						<Rectangle Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCell}"/>
+                						<Rectangle Grid.Row="0" Grid.Column="1" Style="{StaticResource HeaderCell}"/>
+                						<Rectangle Grid.Row="0" Grid.Column="2" Style="{StaticResource HeaderCell}"/>
+
+                						<Rectangle Grid.Row="1" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="1" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<Rectangle Grid.Row="2" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="2" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<Rectangle Grid.Row="3" Grid.Column="0" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="1" Style="{StaticResource DataCell}"/>
+                						<Rectangle Grid.Row="3" Grid.Column="2" Style="{StaticResource DataCell}"/>
+
+                						<TextBlock Margin="6, 2, 6, 2" Grid.Row="0" Grid.Column="1" Text="1 Tailed P" Style="{StaticResource HeaderFont}"/>
+                						<TextBlock Margin="6, 2, 6, 2" Grid.Row="0" Grid.Column="2" Text="2 Tailed P" Style="{StaticResource HeaderFont}"/>
+
+                						<TextBlock Grid.Row="1" Margin="6, 0, 6, 0" Grid.Column="0" Text="Mid-P Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+                						<TextBlock Grid.Row="2" Margin="6, 0, 6, 0" Grid.Column="0" Text="Fisher Exact" Style="{StaticResource HeaderFont1}" HorizontalAlignment="Left"/>
+
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtMidPExact" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherExact" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" />
+                						<TextBlock Margin="6, 0, 6, 0" x:Name="txtFisherExact2P" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</StackPanel>
+                	</StackPanel>
+                    
+                	<StackPanel x:Name="pnlCrosstabContent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,10"/>
+                    <Grid x:Name="grdTable" Width="Auto" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,10"/>
+                </StackPanel>
+                <Grid x:Name="waitCursor" Background="#36C4C4C4" Height="Auto" Visibility="Collapsed">
+					<toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100" />
+				</Grid>
+			</Grid>
+		</Grid>
+    </Grid>
+
+</UserControl>
+

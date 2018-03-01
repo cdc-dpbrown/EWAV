@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="Ewav.AppMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:dashboard="clr-namespace:Ewav"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+             xmlns:DatasourceMenu="clr-namespace:Ewav.ContextMenu;assembly=Ewav.ContextMenu.Menu"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+             d:DesignHeight="300" d:DesignWidth="1000"    
+             
+   
+             
+             DataContext="{Binding Source={StaticResource Locator}, Path=AppMenuViewModel}"    
+             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             >
+
+    <UserControl.Resources>
+
+        <Style x:Key="RectangleStyle1" TargetType="Rectangle">
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="-0.5" Y="-0.5"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                <SkewTransform AngleX="0" AngleY="0"/>
+                                <RotateTransform Angle="-134.21615637340656"/>
+                                <TranslateTransform X="0.5" Y="0.5"/>
+                                <TranslateTransform X="0" Y="1.1102230246251565E-16"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FFD0D9E5" Offset="0"/>
+                        <GradientStop Color="#FF487AB6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RadiusX" Value="0"/>
+            <Setter Property="RadiusY" Value="0"/>
+        </Style>
+        <Style x:Key="PathStyle1" TargetType="Path">
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="-0.5" Y="-0.5"/>
+                                <ScaleTransform ScaleX="0.42070697804067081" 
+
+                                                ScaleY="0.42070697804067081"/>
+                                <SkewTransform AngleX="0" AngleY="0"/>
+                                <RotateTransform Angle="-278.63046519289236"/>
+                                <TranslateTransform X="0.5" Y="0.5"/>
+                                <TranslateTransform X="-0.02811997223844305" Y="-0.28845321875685026"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="sc#0.7, 1, 1, 1" Offset="0"/>
+                        <GradientStop Color="sc#0.2, 1, 1, 1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Name="Fader">
+            <DoubleAnimationUsingKeyFrames RepeatBehavior="8x" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="brdrRefresh">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0.845"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+ 
+    <Grid x:Name="LayoutRoot" Background="White">
+    	<StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <Grid x:Name="AppHeader" Height="55" RenderTransformOrigin="0.5,0.5" Background="#1d60ac " Margin="0,0,0,0" MinWidth="1000">
+    			
+    			<StackPanel x:Name="spMenu" Orientation="Horizontal" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
+
+    				<Button x:Name="SetDataSource" Style="{StaticResource SetDB}" RenderTransformOrigin="6,-3.75" 
+    					Cursor="Hand" ToolTipService.ToolTip="Set Data Source" Margin="0,0,10,0"  Click="SetDataSource_Click"/>
+    				<Button x:Name="Open" Style="{StaticResource Open}" RenderTransformOrigin="6,-3.75" 
+    					Cursor="Hand" ToolTipService.ToolTip="Open Dashboard" Click="Open_Click" Margin="0,0,10,0" />
+    				<Button x:Name="Save" Style="{StaticResource Save}" RenderTransformOrigin="6,-3.75" 
+    					Cursor="Hand" ToolTipService.ToolTip="Save Dashboard" Click="Save_Click" Visibility="Collapsed" Margin="0,0,10,0" />
+                
+    				<Button x:Name="SaveAs" Style="{StaticResource SaveAs}" RenderTransformOrigin="6,-3.75" 
+    					Cursor="Hand" ToolTipService.ToolTip="Save As New Dashboard" Click="SaveAs_Click" Visibility="Collapsed" Margin="0,0,10,0"  />
+                
+    				<Button x:Name="Reset" Content=""    Click="Reset_Click" Style="{StaticResource Reset}"  
+    					RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Clear Dashboard" Visibility="Collapsed" Margin="0,0,10,0" />
+
+    				<Button x:Name="Delete" Content=""  Style="{StaticResource btnDelete}"  
+    					RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Delete Dashboard" Click="Delete_Click" Visibility="Collapsed" Margin="0,0,10,0" />
+                
+    				<Button x:Name="Share" Content="" Style="{StaticResource Share}" 
+    					RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Share Dashboard" Click="Share_Click" Visibility="Collapsed" Margin="0,0,10,0" />
+    				<Button x:Name="Export" Content="" Style="{StaticResource Export}"  Click="Export_Click"
+    					RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Export Dashboard" Visibility="Collapsed" Margin="0,0,10,0" />
+                    <Button x:Name="HTML" Content="" Style="{StaticResource Export}"  
+    					RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Export Dashboard to HTML"           Visibility="Collapsed"    Margin="0,0,10,0" Click="HTML_Click" />
+                    <StackPanel x:Name="spRefreshbtn" Orientation="Horizontal" Visibility="Collapsed"  >
+    					<Button x:Name="Refresh" Style="{StaticResource btnRefresh}"  Click="Refresh_Click"
+    						RenderTransformOrigin="6,-3.75" Cursor="Hand" ToolTipService.ToolTip="Refresh Dashboard" Visibility="Visible" />
+    					<Border x:Name="brdrRefresh" Background="#FFBA1717" BorderThickness="1" BorderBrush="White" Padding="3" CornerRadius="7" Opacity="0.85" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-7,0,0,0" Visibility="Collapsed" >
+    						<TextBlock x:Name="tbRefreshCount" TextWrapping="Wrap" Text="*" ToolTipService.ToolTip="New Records Available" FontWeight="Bold" FontSize="10.667" Foreground="White"/>
+    					</Border>
+                
+    				</StackPanel>
+                
+    			</StackPanel>
+    			<StackPanel x:Name="spAppName" HorizontalAlignment="Right" Margin="0,10,13,9" Orientation="Horizontal">
+    				<TextBlock TextWrapping="Wrap"  x:Name="AppNameText" Text="Epi Info Cloud Data Analytics" 
+    					VerticalAlignment="Center" Margin="0" Padding="0,0,10,0" Foreground="White" FontSize="26.667" />
+            <!--<TextBlock HorizontalAlignment="Right" Height="15" Margin="0,0,8,3" TextWrapping="Wrap" VerticalAlignment="Bottom" 
+
+            Width="192" TextAlignment="Right" FontFamily="Segoe UI" FontSize="12" Name="tbRecordCount" Text=""><Run FontWeight="Bold" 
+
+            Text="Records: "/><Run FontWeight="Bold" FontSize="13.333" Text="350,000 "/><Run FontWeight="Bold" Text="of 350,000"/></TextBlock>-->
+                    <Image x:Name="AppLogo" Source="../Images/ei_logomark_wht_outln_50px.png" Stretch="Fill" Height="36" Width="36" 
+
+    					VerticalAlignment="Center" RenderTransformOrigin="0.905,0.923">
+    					<Image.Effect>
+    						<DropShadowEffect Color="#FF373636" ShadowDepth="2" BlurRadius="1" Opacity="0.45"/>
+    					</Image.Effect>
+    				</Image>
+    			</StackPanel>
+          
+           
+
+    		</Grid>
+    		<Grid x:Name="SecBar" Height="35" Margin="0" MinWidth="1000">
+    			<Image HorizontalAlignment="Right" Margin="0" Source="../Images/secondary_bar.png" Stretch="Fill" />
+    			<StackPanel HorizontalAlignment="Left" Margin="0,-4,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+    		
+    				<TextBlock x:Name="tbDatasource" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FF060606" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="14.667"  />
+    				<TextBlock x:Name="tbDatasourceName" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Foreground="#FF060606" FontSize="14.667"  />
+    				<TextBlock x:Name="tbRecordCount"    HorizontalAlignment="Left" TextWrapping="Wrap" MinWidth="134" VerticalAlignment="Center" FontSize="14.667" Margin="28,0,0,0" />
+    			</StackPanel>
+    		
+    		</Grid>
+    	</StackPanel>
+    </Grid>
+</UserControl> 

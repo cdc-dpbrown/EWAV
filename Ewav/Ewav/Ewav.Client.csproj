@@ -1,0 +1,1022 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F683EEFE-8653-4AF5-B004-F0F0BB380801}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ewav</RootNamespace>
+    <AssemblyName>Ewav</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Ewav.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Ewav.App</SilverlightAppEntry>
+    <TestPageFileName>EwavTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>true</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>..\Ewav.Web\Ewav.Web.csproj</LinkedServerProject>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.20321.0</ExpressionBlendVersion>
+    <AssemblyVersion>1.1.9</AssemblyVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical, Version=2011.1.2220.40, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentArt.Silverlight.DataVisualization.Charting, Version=2011.1.2220.40, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentArt.Silverlight.DataVisualization.Common, Version=2011.1.2220.40, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentArt.Silverlight.Export.PDF, Version=2011.1.2220.40, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentArt.VisualStudio.Silverlight, Version=2011.1.2220.35, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Behaviors">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Bing">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Bing.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Portal">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Portal.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Printing">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Printing.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit.DataSources">
+      <HintPath>Assemblies\ESRI.ArcGIS.Client.Toolkit.DataSources.dll</HintPath>
+    </Reference>
+    <Reference Include="FJ.Core">
+      <HintPath>Assemblies\FJ.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleMvvmToolkit, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.Composition.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.Composition.Initialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=5.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.DataAnnotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Client.Web, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web.Extensions, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ServiceModel.Web.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="system">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SilverlightToolkit-Input.4.2010.4\lib\sl4\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SilverlightToolkit-Layout.4.2010.4\lib\sl4\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Navigation, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SilverlightToolkit-Core.4.2010.4\lib\sl4\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Browser">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Xml.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationEvents\ApplicationEvents.cs" />
+    <Compile Include="ApplicationEvents\CanvasChangedEventArgs.cs" />
+    <Compile Include="ApplicationEvents\ColumnsLoadedEventEventArgs.cs" />
+    <Compile Include="ApplicationEvents\ConnectionStringEventArgs.cs" />
+    <Compile Include="ApplicationEvents\DatasourceListReadyEventArgs.cs" />
+    <Compile Include="ApplicationEvents\ElementMoveEventArgs.cs" />
+    <Compile Include="ApplicationEvents\FilteredRecordcountUpdatedEventArgs.cs" />
+    <Compile Include="ApplicationEvents\MefAvailableGadgetListReadyEventArgs.cs" />
+    <Compile Include="ApplicationEvents\DatasourceChangedEventArgs.cs" />
+    <Compile Include="Common\cEventHelper.cs" />
+    <Compile Include="Common\ChartSeriesDataValue.cs" />
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\DatasourceWatcher.cs" />
+    <Compile Include="Common\Defaults.cs" />
+    <Compile Include="Common\GadgetManager.cs" />
+    <Compile Include="Common\MoveEngine.cs" />
+    <Compile Include="Common\RefreshTimer.cs" />
+    <Compile Include="Common\ScaleTransforms.cs" />
+    <Compile Include="Common\TextBlockConfig.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="ContextMenuCreator.cs" />
+    <Compile Include="Converters.cs" />
+    <Compile Include="ExtensionMethods\CustomValidation.cs" />
+    <Compile Include="ExtensionMethods\Extensions.cs" />
+    <Compile Include="IChartControl.cs" />
+    <Compile Include="IGadget.cs" />
+    <Compile Include="IMapMetaData.cs" />
+    <Compile Include="JPGUtil.cs" />
+    <Compile Include="Locators\ViewModelLocator.cs" />
+    <Compile Include="Mapping\EwavLegendItemData.cs" />
+    <Compile Include="Mapping\EwavMap.cs" />
+    <Compile Include="Mapping\UniqueValueInfoDTO.cs" />
+    <Compile Include="Membership\MembershipManager.cs" />
+    <Compile Include="Membership\User.cs" />
+    <Compile Include="Services\Charts\AberrationControlServiceAgent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\BinomialServiceAgent.cs" />
+    <Compile Include="Services\CanvasServiceAgent.cs" />
+    <Compile Include="Services\DiagnosticsServiceAgent.cs" />
+    <Compile Include="Services\ErrorMessageServiceAgent.cs" />
+    <Compile Include="Services\GadgetException.cs" />
+    <Compile Include="Services\Gadgets\CombinedFrequencyServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\ICombinedFrequencyServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\ILineListControlServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\LineListControlServiceAgent.cs" />
+    <Compile Include="Services\IErrorMessageServiceAgent.cs" />
+    <Compile Include="Services\IMapControlControlServiceAgent.cs" />
+    <Compile Include="Services\MapControlServiceAgent.cs" />
+    <Compile Include="Services\Membership\AdminDatasourcesServiceAgent.cs" />
+    <Compile Include="Services\Membership\IAdminDatasourcesServiceAgent.cs" />
+    <Compile Include="Services\IBinomialServiceAgent.cs" />
+    <Compile Include="Services\ICanvasServiceAgent.cs" />
+    <Compile Include="Services\IStatCalcServiceAgent.cs" />
+    <Compile Include="Services\Membership\IOrganizationServiceAgent.cs" />
+    <Compile Include="Services\Membership\IUserServiceAgent.cs" />
+    <Compile Include="Services\Charts\IXYChartServiceAgent.cs" />
+    <Compile Include="Services\DatasourceServiceAgent.cs" />
+    <Compile Include="Services\Charts\EpiCurveServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\FrequencyControlServiceAgent.cs" />
+    <Compile Include="Services\Charts\IAberrationControlServiceAgent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\IDatasourceServiceAgent.cs" />
+    <Compile Include="Services\Charts\IEpiCurveServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\IFrequencyControlServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\ILinearRegressionServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\ILogisticRegressionServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\IMeansControlServiceAgent.cs" />
+    <Compile Include="Services\Charts\IScatterControlServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\LinearRegressionServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\LogisticRegressionServiceAgent.cs" />
+    <Compile Include="Services\Gadgets\MeansControlServiceAgent.cs" />
+    <Compile Include="Services\Membership\OrganizationServiceAgent.cs" />
+    <Compile Include="Services\Charts\ScatterControlServiceAgent.cs" />
+    <Compile Include="Services\StatCalcServiceAgent.cs" />
+    <Compile Include="Services\Membership\UserServiceAgent.cs" />
+    <Compile Include="Services\Charts\XYChartServiceAgent.cs" />
+    <Compile Include="TextBlockConfig.cs" />
+    <Compile Include="ViewModels\AdminDatasourceViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\AberrationViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\AppMenuViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\BinomialStatCalcViewModel.cs" />
+    <Compile Include="ViewModels\CanvasViewModel.cs" />
+    <Compile Include="ViewModels\DatasourceViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\CombinedFrequencyViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\EpiCurveViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\ErrorMessageViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\FrequencyViewModel.cs" />
+    <Compile Include="Services\Gadgets\ITwoxTwoControlServiceAgent.cs" />
+    <Compile Include="ViewModels\Gadgets\LineListViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\MapControlViewModel.cs" />
+    <Compile Include="ViewModels\KeyValue.cs" />
+    <Compile Include="ViewModels\Gadgets\LinearRegressionViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\LogisticRegressionViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\MeansViewModel.cs" />
+    <Compile Include="Services\Gadgets\TwoxTwoControlServiceAgent.cs" />
+    <Compile Include="ApplicationEvents\TotalRecordcountLoadedEventArgs.cs" />
+    <Compile Include="ViewModels\Gadgets\ScatterViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\StatCalcViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\TwoxTwoViewModel.cs" />
+    <Compile Include="ViewModels\Gadgets\XYChartViewModel.cs" />
+    <Compile Include="ViewModels\ListBoxItemSource.cs" />
+    <Compile Include="ViewModels\Membership\OrganizationViewModel.cs" />
+    <Compile Include="ViewModels\Membership\UserViewModel.cs" />
+    <Compile Include="ViewModels\SetLabelsViewModel.cs" />
+    <Compile Include="Views\AdminMenuView.xaml.cs">
+      <DependentUpon>AdminMenuView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AddEditDataSources.xaml.cs">
+      <DependentUpon>AddEditDataSources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AddEditOrganization.xaml.cs">
+      <DependentUpon>AddEditOrganization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AddEditUser.xaml.cs">
+      <DependentUpon>AddEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\CopyDash.xaml.cs">
+      <DependentUpon>CopyDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\DatabaseDefaultPorts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDefaultPorts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\DataSources.xaml.cs">
+      <DependentUpon>DataSources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Organizations.xaml.cs">
+      <DependentUpon>Organizations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CavasInfoForUser.cs" />
+    <Compile Include="Views\Charts\AberrationDetection.xaml.cs">
+      <DependentUpon>AberrationDetection.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\AppMenuView.xaml.cs">
+      <DependentUpon>AppMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardMainPage.xaml.cs">
+      <DependentUpon>DashboardMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragCanvas.cs" />
+    <Compile Include="MockItems-Temp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\Gadgets\MxNViewModel.cs" />
+    <Compile Include="Services\Gadgets\MxNControlServiceAgent.cs" />
+    <Compile Include="Views\Charts\EpiCurve.xaml.cs">
+      <DependentUpon>EpiCurve.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Charts\Scatter.xaml.cs">
+      <DependentUpon>Scatter.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Charts\SetLabels.xaml.cs">
+      <DependentUpon>SetLabels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Charts\XYChartControl.xaml.cs">
+      <DependentUpon>XYChartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\CloseGadget.cs" />
+    <Compile Include="Views\Dialogs\DashboardInfo .cs" />
+    <Compile Include="Views\Dialogs\DashboardInfoCollection.cs" />
+    <Compile Include="Views\Dialogs\DemoMode.xaml.cs">
+      <DependentUpon>DemoMode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ExportDash.xaml.cs">
+      <DependentUpon>ExportDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\MyComboBox.cs" />
+    <Compile Include="Views\Dialogs\OpenDash.xaml.cs">
+      <DependentUpon>OpenDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Refresh.xaml.cs">
+      <DependentUpon>Refresh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ResetDash.xaml.cs">
+      <DependentUpon>ResetDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ShareDash.xaml.cs">
+      <DependentUpon>ShareDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\UserListCollection.cs" />
+    <Compile Include="Views\Dialogs\UserListInfo.cs" />
+    <Compile Include="Views\Gadgets\CombinedFrequency.xaml.cs">
+      <DependentUpon>CombinedFrequency.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\GroupVariable.xaml.cs">
+      <DependentUpon>GroupVariable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\EwavFilter.xaml.cs">
+      <DependentUpon>EwavFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\GadgetFilterControl.xaml.cs">
+      <DependentUpon>GadgetFilterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\ICustomizableGadget.cs" />
+    <Compile Include="Views\Gadgets\IEwavGadget2.cs" />
+    <Compile Include="Views\Gadgets\LineList.xaml.cs">
+      <DependentUpon>LineList.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Gadgets\MapControl.xaml.cs">
+      <DependentUpon>MapControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\ResizeHandle.cs" />
+    <Compile Include="Views\Gadgets\TextControl.xaml.cs">
+      <DependentUpon>TextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarningWindow.xaml.cs">
+      <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DeleteDash.xaml.cs">
+      <DependentUpon>DeleteDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ForgotPwd.xaml.cs">
+      <DependentUpon>ForgotPwd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DataFilterControl.xaml.cs">
+      <DependentUpon>DataFilterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\AssignedExpression.xaml.cs">
+      <DependentUpon>AssignedExpression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\ConditionalAssign.xaml.cs">
+      <DependentUpon>ConditionalAssign.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\FormattedValue.xaml.cs">
+      <DependentUpon>FormattedValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\IEwavDashboardRule.cs" />
+    <Compile Include="Views\Gadgets\DefinedVariables\RecodedVariable.xaml.cs">
+      <DependentUpon>RecodedVariable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\SimpleAssignment.xaml.cs">
+      <DependentUpon>SimpleAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\SimpleAssignmentStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SimpleAssignmentStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\FillRanges.xaml.cs">
+      <DependentUpon>FillRanges.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\RenderGridCellsDTO.cs" />
+    <Compile Include="Views\Gadgets\FrequencyControl.xaml.cs">
+      <DependentUpon>FrequencyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IEwavGadget.cs" />
+    <Compile Include="Other\MessageTokens.cs" />
+    <Compile Include="Other\PageNames.cs" />
+    <Compile Include="ViewModels\Gadgets\MainPageViewModel.cs" />
+    <Compile Include="Views\ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\DefinedVariables\VariablesControl.xaml.cs">
+      <DependentUpon>VariablesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\WordCloud.cs" />
+    <Compile Include="Views\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Gadgets\LinearRegression.xaml.cs">
+      <DependentUpon>LinearRegression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\LogisticRegression.xaml.cs">
+      <DependentUpon>LogisticRegression.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Gadgets\MeansControl.xaml.cs">
+      <DependentUpon>MeansControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\MxNTableControl.xaml.cs">
+      <DependentUpon>MxNTableControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gadgets\TwoxTwoTableControl.xaml.cs">
+      <DependentUpon>TwoxTwoTableControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ResetPwd.xaml.cs">
+      <DependentUpon>ResetPwd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SaveDash.xaml.cs">
+      <DependentUpon>SaveDash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SetDatasource.xaml.cs">
+      <DependentUpon>SetDatasource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\Binomial.xaml.cs">
+      <DependentUpon>Binomial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\Cohort.xaml.cs">
+      <DependentUpon>Cohort.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\PopulationSurvey.xaml.cs">
+      <DependentUpon>PopulationSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\ChiSquare.xaml.cs">
+      <DependentUpon>ChiSquare.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\Poisson.xaml.cs">
+      <DependentUpon>Poisson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatCalc\TwoByTwoSC.xaml.cs">
+      <DependentUpon>TwoByTwoSC.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\StatCalc\Unmatched.xaml.cs">
+      <DependentUpon>Unmatched.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Metro\Metro.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Metro\Metro.MSControls.SDK.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Metro\Metro.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Metro\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Metro\Styles.SL.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Metro\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\AddEditDataSources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\AddEditOrganization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\AddEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\CopyDash.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\DataSources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\Organizations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Users.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Charts\AberrationDetection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Charts\EpiCurve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Charts\Scatter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Charts\SetLabels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Charts\XYChartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\CloseGadget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\DemoMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ExportDash.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\OpenDash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\Refresh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ResetDash.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\CombinedFrequency.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\GroupVariable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\EwavFilter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\GadgetFilterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\LineList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\MapControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\TextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WarningWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteDash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ForgotPwd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ShareDash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\DataFilterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\AssignedExpression.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\ConditionalAssign.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\FormattedValue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\SimpleAssignment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\FillRanges.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\LinearRegression.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\LogisticRegression.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\MeansControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\MxNTableControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\RecodedVariable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\TwoxTwoTableControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gadgets\DefinedVariables\VariablesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\LogIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ResetPwd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SaveDash.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SetDatasource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatCalc\Binomial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatCalc\ChiSquare.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatCalc\Cohort.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatCalc\Poisson.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatCalc\PopulationSurvey.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatCalc\TwoByTwoSC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatCalc\Unmatched.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Assets\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Views\AppMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gadgets\FrequencyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ComponentArt.Silverlight.DataVisualization.lic" />
+    <None Include="Membership\ClassDiagram1.cd" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\handle.png" />
+    <Resource Include="Images\arrow.png" />
+    <Resource Include="Images\btnrefresh1.png" />
+    <Resource Include="Images\calculator.png" />
+    <Resource Include="Images\chart.png" />
+    <Resource Include="Images\copy.png" />
+    <Resource Include="Images\db_add.png" />
+    <Resource Include="Images\Down.png" />
+    <Resource Include="Images\export.png" />
+    <Resource Include="Images\export1.png" />
+    <Resource Include="Images\filter1.png" />
+    <Resource Include="Images\gadget.png" />
+    <Resource Include="Images\gear.png" />
+    <Resource Include="Images\icon.png" />
+    <Resource Include="Images\labels.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\refresh1.png" />
+    <Resource Include="Images\reset.png" />
+    <Resource Include="Images\reset1.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\save1.png" />
+    <Resource Include="Images\saveHTML.png" />
+    <Resource Include="Images\x.png" />
+    <Resource Include="Images\x_over.png" />
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\error.png" />
+    <Resource Include="Images\trash.png" />
+    <Resource Include="Images\clean.png" />
+    <Resource Include="Images\clipboard.png" />
+    <Resource Include="Images\closegadget.png" />
+    <Resource Include="Images\sendback.png" />
+    <Resource Include="Images\webexport.png" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Behaviors.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Behaviors.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Bing.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Bing.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Portal.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Portal.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Printing.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Printing.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.DataSources.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.DataSources.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.xml" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.xml" />
+    <Content Include="Assemblies\FJ.Core.dll" />
+    <Content Include="Assemblies\SimpleMvvmToolkit.dll" />
+    <Content Include="Assemblies\System.Windows.Interactivity.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.CalcExtensions.Statistical.xml" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Charting.Design.4.0.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Charting.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Charting.xml" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Common.Design.4.0.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Common.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.DataVisualization.Common.xml" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.Export.PDF.dll" />
+    <Content Include="Assemblies\ComponentArt.Silverlight.Export.PDF.xml" />
+    <Content Include="Assemblies\ComponentArt.VisualStudio.Common.dll" />
+    <Content Include="Assemblies\ComponentArt.VisualStudio.Silverlight.dll" />
+    <Content Include="Assemblies\ComponentArt.Win.DataVisualization.Common.dll" />
+    <Resource Include="Images\title.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\minus.png" />
+    <Resource Include="Images\plus.png" />
+    <Resource Include="Images\reset2.png" />
+    <Resource Include="Images\arrow_next_right.png" />
+    <Resource Include="Images\Exportbtn.png" />
+    <Resource Include="Images\Openbtn.png" />
+    <Resource Include="Images\Resetbtn.png" />
+    <Resource Include="Images\SaveAsbtn.png" />
+    <Resource Include="Images\Savebtn.png" />
+    <Resource Include="Images\SetDataSourcebtn.png" />
+    <Resource Include="Images\Sharebtn.png" />
+    <Resource Include="Images\ErrorD.png" />
+    <Resource Include="Images\successD.png" />
+    <Resource Include="Images\user.png" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\datasource.png" />
+    <Resource Include="Images\org.png" />
+    <Resource Include="Images\user1.png" />
+    <Resource Include="Images\admin.png" />
+    <Resource Include="Images\btnDataSource.png" />
+    <Resource Include="Images\btnOrg.png" />
+    <Resource Include="Images\btnUser.png" />
+    <Resource Include="Images\ds12.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\Calculator1.png" />
+    <Resource Include="Images\clear12.png" />
+    <Resource Include="Images\close12.png" />
+    <Resource Include="Images\data12.png" />
+    <Resource Include="Images\dataset12.png" />
+    <Resource Include="Images\delete12.png" />
+    <Resource Include="Images\header_bg.png" />
+    <Resource Include="Images\open12.png" />
+    <Resource Include="Images\org12.png" />
+    <Resource Include="Images\resize12.png" />
+    <Resource Include="Images\save12.png" />
+    <Resource Include="Images\saveas12.png" />
+    <Resource Include="Images\secondary_bar.png" />
+    <Resource Include="Images\setdatasource12.png" />
+    <Resource Include="Images\share12.png" />
+    <Resource Include="Images\user12.png" />
+    <Resource Include="Images\fullscrn.png" />
+    <Resource Include="Images\btndel12.png" />
+    <Resource Include="Images\btnsetdb123.png" />
+    <Resource Include="Images\btndb123.png" />
+    <Resource Include="Images\FitToSize.png" />
+    <Resource Include="Images\resize123.png" />
+    <Resource Include="Images\btndatafilter.png" />
+    <Resource Include="Images\btngadgetheader.png" />
+    <Resource Include="Images\Toolbar\Annotation_New.png" />
+    <Resource Include="Images\Toolbar\Bold.png" />
+    <Resource Include="Images\Toolbar\calendar.png" />
+    <Resource Include="Images\Toolbar\Copy.png" />
+    <Resource Include="Images\Toolbar\Cut.png" />
+    <Resource Include="Images\Toolbar\datagrid.png" />
+    <Resource Include="Images\Toolbar\edit.png" />
+    <Resource Include="Images\Toolbar\edit_16.png" />
+    <Resource Include="Images\Toolbar\Hyperlink.png" />
+    <Resource Include="Images\Toolbar\Hyperlink_big.png" />
+    <Resource Include="Images\Toolbar\Image.png" />
+    <Resource Include="Images\Toolbar\Italic.png" />
+    <Resource Include="Images\Toolbar\ltr.png" />
+    <Resource Include="Images\Toolbar\New.png" />
+    <Resource Include="Images\Toolbar\Open.png" />
+    <Resource Include="Images\Toolbar\Paste.png" />
+    <Resource Include="Images\Toolbar\Paste_big.png" />
+    <Resource Include="Images\Toolbar\Print.png" />
+    <Resource Include="Images\Toolbar\Print_big.png" />
+    <Resource Include="Images\Toolbar\rtl.png" />
+    <Resource Include="Images\Toolbar\Save.png" />
+    <Resource Include="Images\Toolbar\Underline.png" />
+    <Resource Include="Images\Toolbar\view.png" />
+    <Resource Include="Images\ColorPalette\Atlantic.png" />
+    <Resource Include="Images\ColorPalette\Breeze.png" />
+    <Resource Include="Images\ColorPalette\Componenart.png" />
+    <Resource Include="Images\ColorPalette\Deep.png" />
+    <Resource Include="Images\ColorPalette\Earth.png" />
+    <Resource Include="Images\ColorPalette\Evergreen.png" />
+    <Resource Include="Images\ColorPalette\Heatwave.png" />
+    <Resource Include="Images\ColorPalette\Montreal.png" />
+    <Resource Include="Images\ColorPalette\Pastel.png" />
+    <Resource Include="Images\ColorPalette\Rennaisance.png" />
+    <Resource Include="Images\ColorPalette\Sharepoint.png" />
+    <Resource Include="Images\ColorPalette\Study.png" />
+    <Resource Include="Images\ColorPalette\VibrantA.png" />
+    <Resource Include="Images\ColorPalette\VibrantB.png" />
+    <Resource Include="Images\ColorPalette\VibrantC.png" />
+    <Resource Include="Images\copyDash.png" />
+    <Resource Include="Images\ei_logomark_wht_outln_50px.png" />
+    <Content Include="ReadMe-2nd.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{4B47D9DB-C8CA-4087-9D48-80D3153D2A9C}</Project>
+      <Name>CommonLibrary</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.ContextMenu.Components\Ewav.ContextMenu.Components.csproj">
+      <Project>{EEDDE3A7-8D16-48AF-AE8B-EF089B45BCD0}</Project>
+      <Name>Ewav.ContextMenu.Components</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.ContextMenu.Menu\Ewav.ContextMenu.Menu.csproj">
+      <Project>{63B9B5F3-2013-4152-9B04-0B9FA84D364E}</Project>
+      <Name>Ewav.ContextMenu.Menu</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.ContextMenu\Ewav.ContextMenu.csproj">
+      <Project>{75499246-854E-4CF1-B7C8-DA1E963D2E40}</Project>
+      <Name>Ewav.ContextMenu</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Admin\DatabaseDefaultPorts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DatabaseDefaultPorts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gadgets\DefinedVariables\SimpleAssignmentStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SimpleAssignmentStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

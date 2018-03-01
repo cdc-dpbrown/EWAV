@@ -1,0 +1,165 @@
+﻿<sdk:ChildWindow x:Class="Ewav.AddEditUser"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Ewav"
+            mc:Ignorable="d"     
+                 xmlns:controls ="clr-namespace:System.Windows.Automation.Peers;assembly=System.Windows.Controls"
+           Title="Add/Edit Users" VerticalAlignment="Center" HorizontalAlignment="Center"           >
+    <sdk:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle1"/>
+    </sdk:ChildWindow.Style>
+    <sdk:ChildWindow.Resources>
+        <Storyboard x:Name="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="spSource" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:0.4" Value="-1060">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spSource" Storyboard.TargetProperty="(UIElement.Visibility)" BeginTime="00:00:00">
+                <DiscreteObjectKeyFrame KeyTime="00:00:0.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spAssocUser" Storyboard.TargetProperty="(UIElement.Visibility)" BeginTime="00:00:00">
+                <DiscreteObjectKeyFrame KeyTime="00:00:0.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="spAssocUser" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="Storyboard2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="spSource" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spSource" Storyboard.TargetProperty="(UIElement.Visibility)" BeginTime="00:00:00">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spAssocUser" Storyboard.TargetProperty="(UIElement.Visibility)" BeginTime="00:00:00">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="spAssocUser" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </sdk:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot">
+
+        <StackPanel Margin="0,0,0,0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,20" Background="#FFF1CAC2" Visibility="Collapsed">
+                <Image HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Center" Margin="9,6,0,6"/>
+                <TextBlock x:Name="ErrMsg" TextWrapping="Wrap" Text="Please correct the following errors." FontFamily="Segoe UI" Foreground="#FF601919" Margin="6,6,0,6" FontSize="13.333" FontWeight="Normal" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Border Padding="5" BorderThickness="1" BorderBrush="#FFCCCCCC" >
+                <Grid>
+                    <StackPanel x:Name="spWiz" Orientation="Horizontal" VerticalAlignment="Top" d:LayoutOverrides="Width">
+                        <StackPanel x:Name="spStep1" Orientation="Vertical" d:LayoutOverrides="Height">
+                            <TextBlock x:Name="tbStep1" TextWrapping="Wrap" Padding="5,0"><Run Text="Step 1"/><LineBreak/><Run FontWeight="Bold" Text="User Details"/></TextBlock>
+                            <Rectangle x:Name="rectStep1" Fill="#FF26C630" Height="8" Margin="0,4,0,0"/>
+                        </StackPanel>
+                        <StackPanel x:Name="spStep2" Orientation="Vertical" Width="150" d:LayoutOverrides="Height" Margin="10,0,0,0">
+                            <TextBlock x:Name="tbStep2" TextWrapping="Wrap" Padding="5,0" Foreground="#FF7A7A7A"><Run Text="Step 2"/><LineBreak/><Run FontWeight="Bold" Text="Data Sources"/></TextBlock>
+                            <Rectangle x:Name="rectStep2" Fill="#FF7A7A7A" Height="8" Margin="0,4,0,0"/>
+                        </StackPanel>
+                        <Rectangle Stroke="#FFCCCCCC" Fill="#FFD62222" Margin="0,50,0,0" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                    <StackPanel x:Name="spSource" Margin="0,54,0,10" d:LayoutOverrides="Width, Height" RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <CompositeTransform/>
+                        </StackPanel.RenderTransform>
+                        <Grid x:Name="grdEmail" Height="72" Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed">
+                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="#FF625F5F" Width="432" VerticalAlignment="Top"><Run Text="Enter the email address of the user you want to add to your organization."/><LineBreak/><Run Text="Type in the first 3 characters and select from users that are already in the system."/></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="0,0,0,5" TextWrapping="Wrap" Text="Email:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Bottom"/>
+
+                            <sdk:AutoCompleteBox x:Name="autoEmail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="122,42,0,0" Height="30" Width="262" Text="{Binding UserName, Mode=TwoWay}" />
+                            <Button Width="55" Click="btnSearch_Click" Margin="328,42,49,1" Content="Find" Visibility="Collapsed" />
+                        </Grid>
+                        <Grid x:Name="grdUserId" Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Segoe UI" Foreground="#FF625F5F" Width="432" VerticalAlignment="Top" Text="To add a user to your organization, enter the Email address and click the Search." FontSize="12"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="0,30,0,5" TextWrapping="Wrap" Text="Email Address:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top" RenderTransformOrigin="0.842,-1.207"/>
+                            <TextBox   x:Name="tbEmailAddress"          Text="{Binding Email, Mode=TwoWay}"      Margin="122,24,0,0" TextWrapping="Wrap" Height="30" Width="221" HorizontalAlignment="Left" VerticalAlignment="Top" KeyDown="tbEmailAddress_KeyDown"/>
+                            <TextBox   x:Name="tbUserID"          Text="{Binding UserName, Mode=TwoWay}"      Margin="122,24,0,0" TextWrapping="Wrap" Height="30" Width="151" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" />
+                            <Button x:Name="btnSearch" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,48,0" Click="btnSearch_Click" Style="{StaticResource btnprimary}" Width="32" Height="32">
+                                <Image Source="../../Images/search.png" Stretch="Fill" Width="16" Height="16"/>
+                            </Button>
+                        </Grid>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="First Name:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                        <TextBox   x:Name="tbFirstName"          Text="{Binding FirstName, Mode=TwoWay}"      Margin="130,-22,0,0" TextWrapping="Wrap" Height="30" Width="262" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="Last Name:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                        <TextBox x:Name="tbLastName"  Margin="130,-24,0,0"       Text="{Binding LastName, Mode=TwoWay}"   TextWrapping="Wrap" Height="30" Width="262" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="Phone:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                        <TextBox  x:Name="tbPhone" Margin="130,-23,0,0" TextWrapping="Wrap"      Text="{Binding Phone, Mode=TwoWay}"    Height="30" Width="262" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="#FF625F5F" Width="431.3" d:LayoutOverrides="HorizontalMargin" Text="Select the user's role for your Organization and if the user is active or inactive."/>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="Organization:" FontFamily="Segoe UI" FontSize="16" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                        <TextBlock x:Name="OrgName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="[Organization Name]" FontFamily="Segoe UI" FontSize="16" d:LayoutOverrides="HorizontalAlignment" Margin="130,-22,0,0" VerticalAlignment="Top"/>
+                        <StackPanel x:Name="spRole">
+                            <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="Role:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                            <ComboBox x:Name="cmbRole" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,-23,0,0" Width="262">
+                                <ComboBoxItem Content="Administrator" IsSelected="True"/>
+                                <ComboBoxItem Content="Analyst"/>
+                            </ComboBox>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,17,0,0" TextWrapping="Wrap" Text="Active:" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="HorizontalAlignment, HorizontalMargin"/>
+                            <ComboBox x:Name="cmbActive" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,-23,0,0" Width="127">
+                                <ComboBoxItem Content="Yes" IsSelected="True"/>
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    <Button x:Name="btnStep1Next" Content="Continue &gt;&gt;" FontFamily="Segoe UI" Background="#FF63A6DF" Width="120" Margin="301,50,0,0" HorizontalAlignment="Right" Style="{StaticResource btnprimary}" Canvas.ZIndex="30" Padding="5,6" Height="30" VerticalAlignment="Top" Click="btnStep1Next_Click"/>
+                        <Button x:Name="btnCancel1" Content="Cancel" Margin="184,-30,0,0" FontFamily="Segoe UI" Background="#FFD2D2D2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81" Height="30" Style="{StaticResource btnprimary}" Click="Cancel_Click"/>
+                    </StackPanel>
+                    <StackPanel x:Name="spAssocUser" Margin="0,54,0,10" MinWidth="470" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                        <StackPanel.RenderTransform>
+                            <CompositeTransform/>
+                        </StackPanel.RenderTransform>
+                        <TextBlock x:Name="txtAdminDS" HorizontalAlignment="Left" Margin="8,3,0,6" TextWrapping="Wrap" FontFamily="Segoe UI" FontSize="16" Foreground="#FF000000" Width="432" Text="As an administrator, this user is associated with all data sources within the organization."/>
+                        <StackPanel x:Name="spDatasource">
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Associate Data Sources:" Width="212" FontFamily="Segoe UI" VerticalAlignment="Top" Margin="8,0,0,4" FontWeight="Bold"/>
+                        <ListBox x:Name="lbxAvailable" HorizontalAlignment="Left" SelectedIndex="0" Width="160" SelectionMode="Extended" BorderThickness="1" Height="132" VerticalAlignment="Top" Margin="8,1,0,0"/>
+                        <Button x:Name="btnAddSource" Content="&gt;&gt;" HorizontalAlignment="Left" Width="49" VerticalAlignment="Top" Margin="185,-120,0,0" d:LayoutOverrides="VerticalAlignment" Click="btnAddSource_Click"/>
+                        <Button x:Name="btnRemoveSource" Content="&lt;&lt;" Width="49" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="185,-37,0,0" Click="btnRemoveSource_Click"/>
+                        <ListBox x:Name="lbxSelected" HorizontalAlignment="Left" SelectedIndex="0" Width="160" SelectionMode="Single" BorderThickness="1" Height="132" VerticalAlignment="Top" Margin="249,-132,0,0"/></StackPanel>
+                        <Button x:Name="btnFinish" Content="Finish"  FontFamily="Segoe UI" Background="#FF63A6DF" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Style="{StaticResource btnprimary}" Height="30" Padding="5,6" Margin="0,79,0,0" Click="btnFinish_Click"/>
+                        <Button x:Name="btnCancel3" Content="&lt;&lt; Previous" Margin="0,-30,0,0" FontFamily="Segoe UI" Background="#FFD2D2D2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Height="30" Style="{StaticResource btnprimary}"  Click="btnCancel3_Click"/>
+                        <Button x:Name="btnCancel1_Copy" Content="Cancel" Margin="184,-30,0,0" FontFamily="Segoe UI" Background="#FFD2D2D2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81" Height="30" Style="{StaticResource btnprimary}"  Click="Cancel_Click"/>
+                        <sdk:DataGrid HorizontalAlignment="Left" Width="0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Grid>
+</sdk:ChildWindow>

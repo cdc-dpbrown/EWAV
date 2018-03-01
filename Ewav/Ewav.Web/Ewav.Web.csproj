@@ -1,0 +1,735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B546B07-1B3B-4A89-8622-E7FC005049A9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ewav.Web</RootNamespace>
+    <AssemblyName>Ewav.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>{F683EEFE-8653-4AF5-B004-F0F0BB380801}|..\Ewav\Ewav.csproj|ClientBin|False</SilverlightApplicationList>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <AssemblyVersion>1.1.6</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>Z:\EpiInfoVisualization\Deployment\Sprint 10\Version1.0\Ewav.Web.zip</DesktopBuildPackageLocation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicDataDisplay">
+      <HintPath>..\..\..\..\Components\Epi\DynamicDataDisplay.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Analysis.Statistics">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Analysis.Statistics.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Core, Version=7.0.4477.16541, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Components\Epi\Epi.Core.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Core.AnalysisInterpreter">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Core.AnalysisInterpreter.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Core.EnterInterpreter">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Core.EnterInterpreter.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Data.MySQL">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Data.MySQL.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Data.Office">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Data.Office.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Data.Sqlite">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Data.Sqlite.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Data.SqlServer">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Data.SqlServer.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Data.WebDriver">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Data.WebDriver.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.DataVisualization.Toolkit">
+      <HintPath>..\..\..\..\Components\Epi\Epi.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.DataVisualization.Toolkit.PieExtension">
+      <HintPath>..\..\..\..\Components\Epi\Epi.DataVisualization.Toolkit.PieExtension.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Enter.CheckCodeEngine">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Enter.CheckCodeEngine.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Enter.ServiceApplication">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Enter.ServiceApplication.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.ImportExport">
+      <HintPath>..\..\..\..\Components\Epi\Epi.ImportExport.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Web.Common">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Web.Common.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Web.Interfaces">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Web.Interfaces.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Windows">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Windows.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Windows.Globalization">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Windows.Globalization.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Epi.Windows.ImportExport">
+      <HintPath>..\..\..\..\Components\Epi\Epi.Windows.ImportExport.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EpiInfo.Plugin, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\..\..\..\Components\Epi\EpiInfo.Plugin.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EpiMenu.CommandPlugin">
+      <HintPath>..\..\..\..\Components\Epi\EpiMenu.CommandPlugin.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Behaviors">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.Behaviors.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Bing">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.Bing.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.Toolkit.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit.DataSources">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.Toolkit.DataSources.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.WebMap">
+      <HintPath>..\..\..\..\Components\Epi\ESRI.ArcGIS.Client.WebMap.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="GoldParserEngine, Version=1.13.2403.14266, Culture=neutral, PublicKeyToken=6fe80ec331a66ec8, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Components\Epi\GoldParserEngine.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="StatisticsRepository, Version=7.0.9.27, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Components\Epi\StatisticsRepository.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.DirectoryServices">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Server, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization.Design">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CheckXml.aspx" />
+    <Content Include="ClientBin\Assets\Controls.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ClientBin\Ewav.xap" />
+    <Content Include="DatabaseScripts\MySQL_osels_ewav_20130207.sql" />
+    <Content Include="DatabaseScripts\SQLServer_osels_ewav_20130207.sql" />
+    <Content Include="Diagnostics.aspx" />
+    <Content Include="EpiDashboard\DynamicDisplay\DynamicDataDisplay.dll" />
+    <Content Include="EpiDashboard\Images\copy.png" />
+    <Content Include="EpiDashboard\Images\db_add.png" />
+    <Content Include="EpiDashboard\Images\ei_logomark_wht_outln_50px.png" />
+    <Content Include="EpiDashboard\Images\filter1.png" />
+    <Content Include="EpiDashboard\Images\gadget.png" />
+    <Content Include="EpiDashboard\Images\labels.png" />
+    <Content Include="EpiDashboard\Images\refresh1.png" />
+    <Content Include="EpiDashboard\Images\save.png" />
+    <Content Include="EpiDashboard\Images\saveHTML.png" />
+    <Content Include="EpiDashboard\Images\x.png" />
+    <Content Include="EpiDashboard\Images\x_over.png" />
+    <Content Include="EpiDashboard\MS_WPF\Epi.DataVisualization.Toolkit.dll" />
+    <Content Include="EpiDashboard\MS_WPF\Epi.DataVisualization.Toolkit.PieExtension.dll" />
+    <Content Include="EpiDashboard\MS_WPF\System.Windows.Interactivity.dll" />
+    <Content Include="EpiDashboard\MS_WPF\WPFToolkit.dll" />
+    <Content Include="Assemblies\DynamicDataDisplay.dll" />
+    <Content Include="Assemblies\Epi.Analysis.Statistics.dll" />
+    <Content Include="Assemblies\Epi.Core.AnalysisInterpreter.dll" />
+    <Content Include="Assemblies\Epi.Core.dll" />
+    <Content Include="Assemblies\Epi.Core.EnterInterpreter.dll" />
+    <Content Include="Assemblies\Epi.Data.MySQL.dll" />
+    <Content Include="Assemblies\Epi.Data.Office.dll" />
+    <Content Include="Assemblies\Epi.Data.Sqlite.dll" />
+    <Content Include="Assemblies\Epi.Data.SqlServer.dll" />
+    <Content Include="Assemblies\Epi.Data.WebDriver.dll" />
+    <Content Include="Assemblies\Epi.DataVisualization.Toolkit.dll" />
+    <Content Include="Assemblies\Epi.DataVisualization.Toolkit.PieExtension.dll" />
+    <Content Include="Assemblies\Epi.Enter.CheckCodeEngine.dll" />
+    <Content Include="Assemblies\Epi.Enter.ServiceApplication.dll" />
+    <Content Include="Assemblies\Epi.ImportExport.dll" />
+    <Content Include="Assemblies\Epi.Web.Common.dll" />
+    <Content Include="Assemblies\Epi.Web.Interfaces.dll" />
+    <Content Include="Assemblies\Epi.Windows.dll" />
+    <Content Include="Assemblies\Epi.Windows.Globalization.dll" />
+    <Content Include="Assemblies\Epi.Windows.ImportExport.dll" />
+    <Content Include="Assemblies\EpiDashboard.dll" />
+    <Content Include="Assemblies\EpiInfo.Plugin.dll" />
+    <Content Include="Assemblies\EpiMenu.CommandPlugin.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Behaviors.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Bing.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.DataSources.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.Toolkit.dll" />
+    <Content Include="Assemblies\ESRI.ArcGIS.Client.WebMap.dll" />
+    <Content Include="Assemblies\GoldParserEngine.dll" />
+    <Content Include="Assemblies\StatisticsRepository.dll" />
+    <Content Include="Error.aspx" />
+    <Resource Include="icon.png" />
+    <Content Include="EwavLite.aspx" />
+    <Content Include="GetSnapshot.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="header_bg.png" />
+    <Content Include="ReadMe-1st.txt" />
+    <Content Include="Silverlight.js" />
+    <Content Include="Ewav.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckXml.aspx.cs">
+      <DependentUpon>CheckXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckXml.aspx.designer.cs">
+      <DependentUpon>CheckXml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Configuration_Static.cs" />
+    <Compile Include="Config\ConfigDataSet.Designer.cs" />
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatatableBag.cs" />
+    <Compile Include="Diagnostics.aspx.cs">
+      <DependentUpon>Diagnostics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Diagnostics.aspx.designer.cs">
+      <DependentUpon>Diagnostics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\ChartLabelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\ChartLabelDialog.Designer.cs">
+      <DependentUpon>ChartLabelDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\ColumnDataType.cs" />
+    <Compile Include="EpiDashboard\CombineModeTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\Common.cs" />
+    <Compile Include="EpiDashboard\DashboardHelper.cs" />
+    <Compile Include="EpiDashboard\DashboardSharedStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DashboardSharedStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\DataFilters.cs" />
+    <Compile Include="EpiDashboard\DescriptiveStatistics.cs" />
+    <Compile Include="EpiDashboard\Dialogs\DataFilterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\DataFilterDialog.Designer.cs">
+      <DependentUpon>DataFilterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\ExpressionAssignDialog.cs" />
+    <Compile Include="EpiDashboard\Dialogs\ExpressionAssignDialog.Designer.cs">
+      <DependentUpon>ExpressionAssignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\FillRangesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\FillRangesDialog.Designer.cs">
+      <DependentUpon>FillRangesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\RecodeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\RecodeDialog.Designer.cs">
+      <DependentUpon>RecodeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\SimpleAssignDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\Dialogs\SimpleAssignDialog.Designer.cs">
+      <DependentUpon>SimpleAssignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\DragCanvas.cs" />
+    <Compile Include="EpiDashboard\EwavCombinedFrequencyGadgetParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EpiDashboard\FieldInfo.cs" />
+    <Compile Include="EpiDashboard\FilterCondition.cs" />
+    <Compile Include="EpiDashboard\GadgetParameters.cs" />
+    <Compile Include="EpiDashboard\IGadget.cs" />
+    <Compile Include="EpiDashboard\MergeConnection.cs" />
+    <Compile Include="EpiDashboard\NutStat\GrowthMeasurement.cs" />
+    <Compile Include="EpiDashboard\NutStat\GrowthReference.cs" />
+    <Compile Include="EpiDashboard\NutStat\PercentileArrays.cs" />
+    <Compile Include="EpiDashboard\Properties\AssemblyInfo.cs" />
+    <Compile Include="EpiDashboard\RelatedConnection.cs" />
+    <Compile Include="EpiDashboard\Rules\Class1.cs" />
+    <Compile Include="EpiDashboard\Rules\DashboardRules.cs" />
+    <Compile Include="EpiDashboard\Rules\DataAssignmentRule.cs" />
+    <Compile Include="EpiDashboard\Rules\IDashboardRule.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_ConditionalAssign.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_ExpressionAssign.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_Format.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_Recode.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_SimpleAssign.cs" />
+    <Compile Include="EpiDashboard\Rules\Rule_VariableGroup.cs" />
+    <Compile Include="EpiDashboard\Rules\SimpleAssignType.cs" />
+    <Compile Include="EpiDashboard\SimpleDataGrid.xaml.cs">
+      <DependentUpon>SimpleDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EpiDashboard\SortOrder.cs" />
+    <Compile Include="EpiDashboard\StackedHistogramSeries.cs" />
+    <Compile Include="EpiDashboard\WaitCursor.xaml.cs">
+      <DependentUpon>WaitCursor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EwavLite.aspx.cs">
+      <DependentUpon>EwavLite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EwavLite.aspx.designer.cs">
+      <DependentUpon>EwavLite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EwavView.cs" />
+    <Compile Include="GetSnapshot.aspx.cs">
+      <DependentUpon>GetSnapshot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetSnapshot.aspx.designer.cs">
+      <DependentUpon>GetSnapshot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IConfig.cs" />
+    <Compile Include="ISettings.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AberrationDomainService\AberrationDomainService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\AdminDatasourcesDomainService\AdminDatasourcesDomainService.cs" />
+    <Compile Include="Services\AuthenticationDomainService\AuthenticationDomainService.cs" />
+    <Compile Include="Services\CombinedFrequencyDomainService\CombinedFrequencyDomainService.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_GroupVariable.cs" />
+    <Compile Include="Services\DiagnosticsDomainService\DiagnosticsDomainService.cs" />
+    <Compile Include="Services\ErrorDomainService\ErrorDomainService.cs" />
+    <Compile Include="Services\LineListDomainService\LineListDomainService.cs" />
+    <Compile Include="Services\LineListDomainService\LineListManager.cs" />
+    <Compile Include="Services\MapCluster\MapClusterDomainService.cs" />
+    <Compile Include="Services\MapCluster\MapManager.cs" />
+    <Compile Include="Services\OrganizationDomainService\OrganizationDomainService.cs" />
+    <Compile Include="Services\BinomialDomainService\BinomialDomainService.cs" />
+    <Compile Include="Services\CanvasDomainService\CanvasDomainService.cs" />
+    <Compile Include="Services\CanvasDomainService\CanvasManager.cs" />
+    <Compile Include="Services\CrossTabResponseObject.cs" />
+    <Compile Include="Services\DatasourceDomainService\DatasourceDomainService.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_Base.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_ConditionalAssign.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_ExpressionAssign.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_Format.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_SimpleAssignment.cs" />
+    <Compile Include="Services\DictionaryDTO.cs" />
+    <Compile Include="Services\EpiCurveDomainService\EpiCurveDomainService.cs" />
+    <Compile Include="Services\EwavConnectionString.cs" />
+    <Compile Include="Services\EwavDataFilterCondition.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRuleRecodeDataRow.cs" />
+    <Compile Include="Services\DefinedVariable\EwavRule_Recode.cs" />
+    <Compile Include="Services\FrequencyAndCrossTable.cs" />
+    <Compile Include="Services\FrequencyDomainService\FrequencyDomainService.cs" />
+    <Compile Include="Services\FrequencyDomainService\FrequencyManager.cs" />
+    <Compile Include="Services\FrequencyDomainService\FrequencyResultData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\GridCells.cs" />
+    <Compile Include="Services\LinearRegressionDomainService\LinearRegressionDomainService.cs" />
+    <Compile Include="Services\LinearRegressionDomainService\LinearRegressionResults.cs" />
+    <Compile Include="Services\LinearRegressionDomainService\LinearRegVariableRow.cs" />
+    <Compile Include="Services\LinearRegressionDomainService\LinRegressionResults.cs" />
+    <Compile Include="Services\ListOfStringClass.cs" />
+    <Compile Include="Services\LogisticRegressionDomainService\LogisticRegressionDomainService.cs" />
+    <Compile Include="Services\LogisticRegressionDomainService\LogisticRegressionManager.cs" />
+    <Compile Include="Services\MxNDomainService\MxNDomainService.cs" />
+    <Compile Include="Services\RegressionManager.cs" />
+    <Compile Include="Services\LogisticRegressionDomainService\LogRegressionResults.cs" />
+    <Compile Include="Services\MeansDomainService\MeansDomainService.cs" />
+    <Compile Include="Services\MeansDomainService\MeansManager.cs" />
+    <Compile Include="Services\MxNDomainService\MxNGridCell.cs" />
+    <Compile Include="Services\MxNDomainService\MxNGridRow.cs" />
+    <Compile Include="Services\MxNDomainService\MxNSetTextParameter.cs" />
+    <Compile Include="Services\MySingleTableResults.cs" />
+    <Compile Include="Services\MyString.cs" />
+    <Compile Include="Services\ScatterDomainService\ScatterDomainService.cs" />
+    <Compile Include="Services\ScatterDomainService\ScatterDTO.cs" />
+    <Compile Include="Services\SingleTableResults.cs" />
+    <Compile Include="Services\DataTableConverter.cs" />
+    <Compile Include="Services\ListofDescriptiveStatisticsLists.cs" />
+    <Compile Include="Services\StatCalcDomainService\StatCalcDomainService.cs" />
+    <Compile Include="Services\TwoxTwoDomainService\TextBlockConfig.cs" />
+    <Compile Include="Services\UserDomainService\UserDomainService.cs" />
+    <Compile Include="Services\VariableRow.cs" />
+    <Compile Include="Services\TwoxTwoDomainService\TwoByTwoDomainService.cs" />
+    <Compile Include="Services\TwoxTwoDomainService\TwoxTwoManager.cs" />
+    <Compile Include="Services\TwoxTwoDomainService\TwoByTwoTableDTO.cs" />
+    <Compile Include="Services\TwoxTwoDomainService\TwoxTwoResultsSet.cs" />
+    <Compile Include="Services\XYChartDomainService\XYChartDomainService.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="StringLiterals.Shared.cs" />
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ewav.BAL\Ewav.BAL.csproj">
+      <Project>{59C155F3-7DFD-4FC5-A0C1-D6F875EFA411}</Project>
+      <Name>Ewav.BAL</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.DAL\Ewav.DAL.csproj">
+      <Project>{0CE1F7DE-5815-4591-978D-14D7E0B18273}</Project>
+      <Name>Ewav.DAL</Name>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.Entities\Ewav.DTO.csproj">
+      <Project>{E031AF81-D66D-463F-8191-C41C00CB6151}</Project>
+      <Name>Ewav.DTO</Name>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ewav.Security\Ewav.Security.csproj">
+      <Project>{7143E4D6-1CE6-4F7E-B6BE-4CB70BF51E4F}</Project>
+      <Name>Ewav.Security</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\ConfigDataSet.resx" />
+    <EmbeddedResource Include="EpiDashboard\ChartLabelDialog.resx">
+      <DependentUpon>ChartLabelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\DashboardSharedStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DashboardSharedStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\Dialogs\DataFilterDialog.resx">
+      <DependentUpon>DataFilterDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\Dialogs\ExpressionAssignDialog.resx">
+      <DependentUpon>ExpressionAssignDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\Dialogs\FillRangesDialog.resx">
+      <DependentUpon>FillRangesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\Dialogs\RecodeDialog.resx">
+      <DependentUpon>RecodeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EpiDashboard\Dialogs\SimpleAssignDialog.resx">
+      <DependentUpon>SimpleAssignDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\System.ComponentModel.Composition.zip" />
+    <Content Include="ClientBin\System.ComponentModel.Composition.Initialization.zip" />
+    <Content Include="ClientBin\System.ComponentModel.DataAnnotations.zip" />
+    <Content Include="ClientBin\System.ServiceModel.DomainServices.Client.zip" />
+    <Content Include="ClientBin\System.ServiceModel.DomainServices.Client.Web.zip" />
+    <Content Include="ClientBin\System.ServiceModel.Web.Extensions.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Data.DataForm.Toolkit.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Data.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Data.Input.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Input.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Input.Toolkit.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Layout.Toolkit.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Navigation.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Toolkit.zip" />
+    <Content Include="ClientBin\System.Windows.Data.zip" />
+    <Content Include="ClientBin\System.Xml.Linq.zip" />
+    <Content Include="ClientBin\System.Json.zip" />
+    <Content Include="ClientBin\System.ServiceModel.Syndication.zip" />
+    <Content Include="ClientBin\System.Xml.Serialization.zip" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="EpiDashboard\ClassDiagram2.cd" />
+    <None Include="EpiDashboard\ClassDiagram3.cd" />
+    <Content Include="Assemblies\Epi.zip" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="EpiDashboard\SimpleDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EpiDashboard\WaitCursor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EpiDashboard\StatCalc\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57683</DevelopmentServerPort>
+          <DevelopmentServerVPath>/EWAV.web</DevelopmentServerVPath>
+          <IISUrl>http://localhost/EWAV.web</IISUrl>
+          <NTLMAuthentication>True</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

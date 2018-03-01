@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Ewav.DataSources"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    mc:Ignorable="d"
+    d:DesignHeight="914" d:DesignWidth="614">
+    
+    <Border Margin="0,0,-58,0" Background="White" BorderThickness="4" BorderBrush="#FFC0CFE2">
+    	<Border.Effect>
+    		<DropShadowEffect Color="#FFBCB9B9" ShadowDepth="3" BlurRadius="43" Direction="166"/>
+    	</Border.Effect>
+    
+		<Grid x:Name="LayoutRoot">
+			<Grid x:Name="HeaderGrid" Height="36" VerticalAlignment="Top" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.917*"/>
+					<ColumnDefinition Width="25"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock TextWrapping="Wrap" Text="Data Sources" FontSize="21.333" FontWeight="Bold" FontFamily="Segoe UI" Width="235" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top" Margin="10,5,0,0"/>
+				<Rectangle x:Name="GHeader" VerticalAlignment="Top" Height="4" Margin="10,33,0,0" StrokeThickness="0" Fill="#FF00B050" HorizontalAlignment="Left" Width="193" />
+			</Grid>
+			<StackPanel Margin="10,39,10,10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+				<StackPanel x:Name="grdUsers" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" >
+					<TextBlock TextWrapping="Wrap" Text="Organization:" FontSize="18.667" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,16,5,0"/>
+					<ComboBox x:Name="cmbOrgName"   DropDownClosed="cmbOrgName_DropDownClosed" Width="224" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="127,-27,0,0"/>
+					<StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,9,0,18" Background="#FFDCECBB" Visibility="Collapsed">
+						<Image x:Name="imgerrMsg" HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Center" Margin="10,6,0,6" Visibility="Collapsed"/>
+						<Image x:Name="imgSMsg" HorizontalAlignment="Left" Height="20" Source="../../images/successD.png" Stretch="Fill" Width="20" VerticalAlignment="Center" Margin="10,6,0,6"/>
+						<TextBlock x:Name="tbErrMsg" TextWrapping="Wrap" Text="The email or password you entered is incorrect." FontFamily="Segoe UI" Foreground="#FF445818" Margin="6,6,0,6" FontSize="13.333" FontWeight="Bold" VerticalAlignment="Center"/>
+					</StackPanel>
+					<Button x:Name="btnAddNewDataSource" Content="Add New DataSource" FontFamily="Segoe UI" Background="#FF63A6DF" Width="182" Margin="10,20,0,5" HorizontalAlignment="Left" Click="Add_Click" Style="{StaticResource btnprimary}" Canvas.ZIndex="30" Padding="5,6" Height="30"/>
+					<sdk:DataPager PageSize="10" VerticalAlignment="Top" Margin="10,-36,0,0" Background="{x:Null}" HorizontalAlignment="Left" Visibility="Collapsed" MaxHeight="600"/>
+					<sdk:DataGrid x:Name="dgDataSource" RowHeight="35" AutoGenerateColumns="False" ItemsSource="{Binding UserListInfo}" DataContext="{Binding}" HorizontalAlignment="Left" 
+						MaxHeight="400" VerticalAlignment="Top" AreRowGroupHeadersFrozen="False" Margin="10,1,0,0" IsReadOnly="True" MinHeight="250" >
+						<sdk:DataGrid.Columns>
+							<sdk:DataGridTextColumn Binding="{Binding DatasourceName}" Header="Name" Width="160"/>
+							<sdk:DataGridTextColumn Binding="{Binding Connection.ServerName}" Header="Server Name" Width="160"/>
+							<sdk:DataGridTextColumn Binding="{Binding Connection.DatabaseType}" Header="Type" Width="100"/>
+							<sdk:DataGridTextColumn Binding="{Binding Connection.DatabaseName}" Header="Database Name" Width="160"/>
+							<sdk:DataGridTextColumn Binding="{Binding IsActive}" Header="Active" Width="100"/>
+							<sdk:DataGridTextColumn Binding="{Binding AssociatedUsers.Count}" Header="Users" Width="100"/>
+							<sdk:DataGridTemplateColumn Width="80" >
+								<sdk:DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal" Margin="8,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center">
+											<!--<Button Content="Edit" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="VerticalAlignment" Width="60" Style="{StaticResource btnstyle1}" Click="Edit_Click"/>
+    									<TextBlock Text="" Width="15"/>
+                                        <Button Content="Delete" FontFamily="Segoe UI" FontSize="13.333" d:LayoutOverrides="VerticalAlignment" Width="60"  Click="Delete_Click"/>-->
+											<Button Content="Edit" Click="Edit_Click" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" Width="60" Style="{StaticResource btnprimary}"/>
+										</StackPanel>
+									</DataTemplate>
+								</sdk:DataGridTemplateColumn.CellTemplate>
+							</sdk:DataGridTemplateColumn>
+						</sdk:DataGrid.Columns>
+					</sdk:DataGrid>
+					<TextBlock Height="19" TextWrapping="Wrap" Text="No Users have been added." Width="194" HorizontalAlignment="Left" Margin="10,-127,0,0" Visibility="Collapsed"/>
+				</StackPanel>
+			</StackPanel>
+            <Grid x:Name="waitCursor" Background="#36C4C4C4" Height="Auto" Visibility="Collapsed">
+                <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100" Style="{StaticResource busy}" />
+            </Grid>
+        </Grid>
+	</Border>
+</UserControl>

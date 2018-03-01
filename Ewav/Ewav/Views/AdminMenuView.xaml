@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="Ewav.AdminMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:dashboard="clr-namespace:Ewav"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+             xmlns:DatasourceMenu="clr-namespace:Ewav.ContextMenu;assembly=Ewav.ContextMenu.Menu"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+             d:DesignHeight="300" d:DesignWidth="1000"    
+             DataContext="{Binding Source={StaticResource Locator}, Path=AppMenuViewModel}"  
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions">
+       <Grid x:Name="LayoutRoot" Background="White">
+        <Grid x:Name="AppHeader" Height="55" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="0,0,0,0" MinWidth="1000" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,0.5" StartPoint="0.5,1.2">
+                    <LinearGradientBrush.RelativeTransform>
+                        <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-58" SkewX="87" SkewY="20" ScaleX="0.5" 
+
+                                            ScaleY="0.15"/>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFB4CCD2"/>
+                    <GradientStop Color="#FF84C9D5" Offset="1"/>
+
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFC4C4C4" ShadowDepth="2" Direction="300" Opacity="0.9" BlurRadius="3"/>
+            </Grid.Effect>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0" AngleY="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel x:Name="Admin_Tool" Orientation="Horizontal" HorizontalAlignment="Left" Margin="47,15,0,8" d:LayoutOverrides="Height">
+                <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Epi Info Visualization Administration" 
+                    VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="24" FontWeight="Bold" Foreground="#FF333333" Margin="0" 
+                    Style="{StaticResource HeaderTextStyle}" Padding="0,0,10,0"/>
+
+                    <Path Data="M183,34 L183,47" Stretch="Fill" Stroke="#FF022E52" UseLayoutRounding="False" 
+                      Width="1" Height="24" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <Image x:Name="AppLogo" Source="../Images/icon.png" Stretch="Fill" Height="36" Width="36" HorizontalAlignment="Left" 
+
+                   VerticalAlignment="Center" RenderTransformOrigin="0.905,0.923" d:LayoutOverrides="HorizontalAlignment" Margin="5,0,0,0">
+                <Image.Effect>
+                    <DropShadowEffect Color="#FF373636" ShadowDepth="2" BlurRadius="1" Opacity="0.45"/>
+                </Image.Effect>
+            </Image>
+        </Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <Grid x:Name="AppHeader1" Background="#1d60ac" Height="55" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0" MinWidth="1000">
+        		
+        		<StackPanel x:Name="spMenu" Orientation="Horizontal" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
+        			<Button x:Name="ManageOrg" RenderTransformOrigin="6,-3.75" 
+        				Cursor="Hand" Margin="0,1,10,0" Click="ManageOrg_Click" Content="Organizations" Style="{StaticResource btnORG}" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Manage Organizations" />
+        			<Button x:Name="ManageUsers"  RenderTransformOrigin="6,-3.75" 
+        				Cursor="Hand" Margin="0,0,10,0" Content="Users" Style="{StaticResource btnUser}" Click="ManageUsers_Click" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Manage Users"/>
+        			<Button x:Name="ManageDataSources"  RenderTransformOrigin="6,-3.75" 
+        				Cursor="Hand" Margin="0,0,10,0" Content="Data Sources" Style="{StaticResource btnDS}" FontFamily="Segoe UI" FontWeight="Bold" FontSize="13.333" Click="ManageDataSources_Click" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Manage Data Sources"/>
+                	<Button x:Name="CopyDashboard"  RenderTransformOrigin="6,-3.75" 
+        				Cursor="Hand" Margin="0,0,10,0" Content="Copy Dashboard" Style="{StaticResource btnCopyDash}" FontFamily="Segoe UI" FontWeight="Bold" FontSize="13.333"     Click="CopyDashboard_Click"     HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Copy Dashboard"/>
+        		</StackPanel>
+        		<StackPanel x:Name="spAppName" HorizontalAlignment="Right" Margin="0,10,13,9" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" x:Name="AppNameText2" Text="Epi Info Cloud Data Analytics Administration" 
+        				VerticalAlignment="Center" Margin="0" Padding="0,0,10,0" Foreground="White" FontSize="26.667" />
+            <!--<TextBlock HorizontalAlignment="Right" Height="15" Margin="0,0,8,3" TextWrapping="Wrap" VerticalAlignment="Bottom" 
+
+            Width="192" TextAlignment="Right" FontFamily="Segoe UI" FontSize="12" Name="tbRecordCount" Text=""><Run FontWeight="Bold" 
+
+            Text="Records: "/><Run FontWeight="Bold" FontSize="13.333" Text="350,000 "/><Run FontWeight="Bold" Text="of 350,000"/></TextBlock>-->
+                    <Image x:Name="AppLogo1" Source="../Images/ei_logomark_wht_outln_50px.png" Stretch="Fill" Height="36" Width="36" 
+
+        				VerticalAlignment="Center" RenderTransformOrigin="0.905,0.923">
+        				<Image.Effect>
+        					<DropShadowEffect Color="#FF373636" ShadowDepth="2" BlurRadius="1" Opacity="0.45"/>
+        				</Image.Effect>
+        			</Image>
+        		</StackPanel>
+          
+           
+
+        	</Grid>
+        	<Grid x:Name="SecBar" Height="35" Margin="0" MinWidth="1000">
+        		<Image HorizontalAlignment="Right" Margin="0" Source="/Ewav;component/Images/secondary_bar.png" Stretch="Fill" />
+        		<StackPanel HorizontalAlignment="Left" Margin="0,-4,0,0" VerticalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+        			<TextBlock x:Name="tbOrg" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FF060606" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="14.667" Text="Organization: "  />
+        			<TextBlock x:Name="tbOrgName" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Foreground="#FF060606" FontSize="14.667" Text="CACI"  />
+        		</StackPanel>
+        		<TextBlock x:Name="tbVersion" TextWrapping="Wrap" Text="Version "    FontFamily="Segoe UI" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="24,-5,0,0"/>
+    		
+        	</Grid>
+        </StackPanel>
+    </Grid>
+</UserControl> 

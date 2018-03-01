@@ -1,0 +1,13 @@
+﻿<h3>
+    Dashboards</h3>
+<h5>
+    Please select a dashboard that you would like to open.</h5>
+<div id="Div3"
+     style="margin-bottom: 2px; font-size: 12pt; font-weight: bold; display: block;">
+    <label for="Email" style="display: block;">
+        Select a Dashboard to open:</label>
+    <select ng-options="canvas.CanvasName for canvas in Canvases" ng-model="canvas"
+            ng-change="selectcanvas(canvas);">
+    </select>
+    <br/><br/>
+</div>

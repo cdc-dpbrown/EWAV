@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59C155F3-7DFD-4FC5-A0C1-D6F875EFA411}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ewav.BAL</RootNamespace>
+    <AssemblyName>Ewav.BAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StatisticsRepository, Version=7.0.9.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Ewav\Ewav.Web\Assemblies\StatisticsRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Ewav\Ewav.Web\EpiDashboard\ColumnDataType.cs">
+      <Link>ColumnDataType.cs</Link>
+    </Compile>
+    <Compile Include="Cryptography.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="EntityManager.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="EwavColumn.cs" />
+    <Compile Include="EwavDatasourceDto.cs" />
+    <Compile Include="EwavDatasourceListManager.cs" />
+    <Compile Include="IDatasource.cs" />
+    <Compile Include="EwavGadgetParameters.cs" />
+    <Compile Include="Mapper.cs" />
+    <Compile Include="PasswordHasher.shared.cs" />
+    <Compile Include="Permalink.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ewav.DAL\Ewav.DAL.csproj">
+      <Project>{0CE1F7DE-5815-4591-978D-14D7E0B18273}</Project>
+      <Name>Ewav.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ewav.Entities\Ewav.DTO.csproj">
+      <Project>{E031AF81-D66D-463F-8191-C41C00CB6151}</Project>
+      <Name>Ewav.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ewav.Security\Ewav.Security.csproj">
+      <Project>{7143E4D6-1CE6-4F7E-B6BE-4CB70BF51E4F}</Project>
+      <Name>Ewav.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Implementation\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

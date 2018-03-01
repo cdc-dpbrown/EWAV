@@ -1,0 +1,122 @@
+﻿<sdk:ChildWindow	
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+	xmlns:local="clr-namespace:Ewav"
+	mc:Ignorable="d"
+	x:Class="Ewav.ShareDash"
+	Title="Share Dashboard" VerticalAlignment="Center"
+	HorizontalAlignment="Center" Background="#FFD5E2F7">
+	<sdk:ChildWindow.Resources>
+		<Style x:Key="HyperlinkButtonStyle1" TargetType="HyperlinkButton"  />
+		<Style x:Key="HyperlinkButtonStyle2" TargetType="HyperlinkButton"  />
+        <Style x:Key="checkAlign" TargetType="sdk:DataGridCell">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+        </Style>
+    </sdk:ChildWindow.Resources>
+	<sdk:ChildWindow.Style>
+		<StaticResource ResourceKey="ChildWindowStyle1"/>
+	</sdk:ChildWindow.Style>
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<sdk:TabControl x:Name="tabShare" VerticalAlignment="Top" Width="406" Margin="0,25,0,0" Grid.RowSpan="3">
+			<sdk:TabItem Header="Share">
+				    <StackPanel x:Name="spShare" Margin="10,10,0,0">
+					<TextBlock TextWrapping="Wrap" Text="Title:" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Normal" Margin="0,5"/>
+					<TextBlock x:Name="tbTitle" TextWrapping="Wrap" Text="Dash Board Title" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Bold" Margin="35,-23,0,5"/>
+					<TextBlock TextWrapping="Wrap" Text="Data Source:" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Normal" Margin="0,5" Visibility="Collapsed"/>
+					<TextBlock x:Name="tbDataSource" TextWrapping="Wrap" Text="Data Source Name" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Bold" Margin="81,-23,0,5" Visibility="Collapsed"/>
+					<TextBlock TextWrapping="Wrap" Text="Select one or more users from your organization to share this dashboard with." HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Normal" Margin="0,5" Width="374.7"/>
+					<TextBlock TextWrapping="Wrap" Text="Select Users" FontFamily="Segoe UI" FontWeight="Bold" VerticalAlignment="Top" Margin="0,5"/>
+					<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-30,24,0">
+						<HyperlinkButton Content="Select All" Foreground="#FF3F3F3F" FontFamily="Segoe UI" Click="select_all_Click" Style="{StaticResource LinKWhite}" FontSize="13.333"/>
+						<TextBlock TextWrapping="Wrap" Text="|" HorizontalAlignment="Center" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,-5,0,0" Height="16"/>
+						<HyperlinkButton Content="Clear All" Style="{StaticResource LinKWhite}" Foreground="#FF3F3F3F" FontFamily="Segoe UI" Click="clear_all_Click" FontSize="13.333"/>
+					</StackPanel>
+					<sdk:DataGrid x:Name="dgUsers" AutoGenerateColumns="False" ItemsSource="{Binding UserListInfo}" DataContext="{Binding}" Width="Auto" HorizontalAlignment="Left" MinHeight="100" MaxHeight="250" CanUserResizeColumns="False" IsReadOnly="True" Margin="0,0,10,0">
+						<sdk:DataGrid.Columns>
+                        <!--<sdk:DataGridCheckBoxColumn Binding="{Binding Path=IsSelected, Mode=TwoWay}" Header="Select" Width="60"/>-->
+							<sdk:DataGridTemplateColumn Width="50" CellStyle="{StaticResource checkAlign}" >
+								<sdk:DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<CheckBox  IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+									</DataTemplate>
+								</sdk:DataGridTemplateColumn.CellTemplate>
+							</sdk:DataGridTemplateColumn>
+							<sdk:DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" Width="160"/>
+							<sdk:DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" Width="160"/>
+						</sdk:DataGrid.Columns>
+					</sdk:DataGrid>
+                  
+                        
+                    <Button x:Name="btnOpenDB" Style="{StaticResource btnprimary}" Content="Share Dashboard" Height="29" VerticalAlignment="Top" Width="172" HorizontalAlignment="Left" Margin="0,10,0,0" Click="OKButton_Click"/>
+					<Button x:Name="btnCancel" Content="Cancel" Height="29" VerticalAlignment="Top" Width="80" Margin="180,-29,0,14.1" HorizontalAlignment="Left" Click="CancelButton_Click" Style="{StaticResource btnprimary}"/>
+				</StackPanel>
+            </sdk:TabItem>
+			<sdk:TabItem Header="Copy/Email URL">
+				<StackPanel x:Name="spGetURL" Margin="10,10,0,0">
+					<TextBlock TextWrapping="Wrap" Text="Link for EWAV" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Bold" Margin="0,5"/>
+                    <TextBox Height="49"  Name="txtEWAVUrl" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="346" TextChanged="TextBox_TextChanged" />
+					<TextBlock TextWrapping="Wrap" Text="Link for EWAV LITE" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Bold" Margin="0,5"/>
+                    <TextBox Height="49"      Name="txtEWAVLITEUrl"     TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="346"/>
+                    <TextBlock TextWrapping="Wrap" Text="Select a User to Email these Links" HorizontalAlignment="Left" FontFamily="Segoe UI" FontWeight="Bold" Margin="0,27,0,5"/>
+                    <!--<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="216"/>-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-30,24,0">
+                        <HyperlinkButton Content="Select All" Foreground="#FF3F3F3F" FontFamily="Segoe UI" Click="select_shared_Click" Style="{StaticResource LinKWhite}" FontSize="13.333"/>
+						<TextBlock TextWrapping="Wrap" Text="|" HorizontalAlignment="Center" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,-5,0,0" Height="16"/>
+						<HyperlinkButton Content="Clear All" Style="{StaticResource LinKWhite}" Foreground="#FF3F3F3F" FontFamily="Segoe UI" Click="clear_shared_Click" FontSize="13.333"/>
+					</StackPanel>
+                    <sdk:DataGrid x:Name="dgSharedUsers" AutoGenerateColumns="False" DataContext="{Binding}" Width="Auto" HorizontalAlignment="Left" MinHeight="100" MaxHeight="250" CanUserResizeColumns="False" IsReadOnly="True" Margin="0,0,10,0">
+                        <sdk:DataGrid.Columns>
+                            <!--<sdk:DataGridCheckBoxColumn Binding="{Binding Path=IsSelected, Mode=TwoWay}" Header="Select" Width="60"/>-->
+                            <sdk:DataGridTemplateColumn Width="50" CellStyle="{StaticResource checkAlign}" >
+                                <sdk:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox  IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                                    </DataTemplate>
+                                </sdk:DataGridTemplateColumn.CellTemplate>
+                            </sdk:DataGridTemplateColumn>
+                            <sdk:DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" Width="160"/>
+                            <sdk:DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" Width="160"/>
+                        </sdk:DataGrid.Columns>
+                    </sdk:DataGrid>
+                    <StackPanel>
+                    <Button x:Name="btnClose" Style="{StaticResource btnprimary}" Content="Close" Height="29" Click="CancelButton_Click" Width="143"  />
+                    <Button x:Name="btnSendEmail" Style="{StaticResource btnprimary}" Content="Send Email" Height="29" Click="btnSendEmail_Click" Width="118"  />
+                    </StackPanel>
+                </StackPanel>
+			</sdk:TabItem>
+		</sdk:TabControl>
+		  
+		
+		<StackPanel Grid.RowSpan="1" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="GridBox">
+			<StackPanel x:Name="spMsg" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,7" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Height="20" Source="../../images/ErrorD.png" Stretch="Fill" Width="20" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbSaveError" TextWrapping="Wrap" Text="Please select atleast one user to share the dashboard with." FontFamily="Segoe UI" Foreground="#FF601919" Margin="6,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="348.3"/>
+			</StackPanel>
+			<StackPanel x:Name="spMsg_Success" Height="77" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="379" Margin="0,0,7,0" Visibility="Collapsed">
+				<Image HorizontalAlignment="Left" Source="../../images/SuccessD.png" Stretch="Fill" VerticalAlignment="Center" Height="26" Width="26"/>
+				<TextBlock TextWrapping="Wrap" FontFamily="Segoe UI" Foreground="#FF1F332C" Margin="29,-26,0,0" VerticalAlignment="Center" FontSize="14.667"><Run Text="Your dashboard is now shared with users you have selected."/><LineBreak/><Run Text="An email has been sent to the users with a link for the dashboard."/></TextBlock>
+				<Button x:Name="btnBegin" Content="Continue" Margin="29,4,0,0" Width="172" HorizontalAlignment="Left"  Style="{StaticResource btnprimary}" Height="29" Click="btnBegin_Click" />
+			</StackPanel>
+            <StackPanel x:Name="spMsg_EmailSent" Height="77" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="379" Margin="0,0,7,0" Visibility="Collapsed">
+                <Image HorizontalAlignment="Left" Source="../../images/SuccessD.png" Stretch="Fill" VerticalAlignment="Center" Height="26" Width="26"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Segoe UI" Foreground="#FF1F332C" Margin="29,-26,0,0" VerticalAlignment="Center" FontSize="14.667"><Run Text="Dashboard information has been emailed to selected users."/></TextBlock>
+                <Button x:Name="btnBegin1" Content="Continue" Margin="29,4,0,0" Width="172" HorizontalAlignment="Left"  Style="{StaticResource btnprimary}" Height="29" Click="btnBegin_Click" />
+            </StackPanel>
+        </StackPanel>
+        <Grid x:Name="waitCursor" Background="#35C4C4C4" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="True" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource busy}" />
+        </Grid>
+
+    </Grid>
+</sdk:ChildWindow>
